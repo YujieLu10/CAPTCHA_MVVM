@@ -1,0 +1,14 @@
+﻿  Moc'ing QtGuiApplication1.h...
+  Uic'ing QtGuiApplication1.ui...
+  Rcc'ing QtGuiApplication1.qrc...
+RCC : warning : No resources in 'C:\Users\Patrick\Desktop\test\QtGuiApplication1\QtGuiApplication1\QtGuiApplication1.qrc'.
+  
+  Commom.cpp
+  moc_QtGuiApplication1.cpp
+  main.cpp
+  Observable.cpp
+  Observer.cpp
+  View.cpp
+  正在生成代码...
+  qrc_QtGuiApplication1.cpp
+  QtGuiApplication1.vcxproj -> C:\Users\Patrick\Desktop\test\QtGuiApplication1\Win32\Release\QtGuiApplication1.exe
