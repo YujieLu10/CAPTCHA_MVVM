@@ -15,9 +15,9 @@
 和置信度，来判断大概可能是哪个字母。识别本质上就是分类。
 ### `功能模式协作图`
 ![](https://github.com/cubeFUN/Sum/blob/master/img/Frame.jpg)
+### `MVVM模式`
+#### `Model`
 
-### `Model`
+#### `View`
 
-### `View`
-
-### `View-Model`
+#### `View-Model`
