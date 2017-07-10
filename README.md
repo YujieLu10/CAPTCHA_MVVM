@@ -21,6 +21,7 @@
 ### `功能模式协作图`
 ![](https://github.com/cubeFUN/Sum/blob/master/img/Frame.jpg)
 ### `MVVM模式`
+MVVM模式由视图(View)、视图模型 (ViewModel)、模型(Model)三部分组成，通 过这三部分实现UI逻辑、呈现逻辑和状态控 制、数据与业务逻辑的分离。 
 ### `Model`
 * para
     * Mat m
