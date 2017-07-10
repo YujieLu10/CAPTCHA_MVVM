@@ -27,10 +27,10 @@
 
 ### `View`
 * para
-    *filename :QString
-    *originScene : QGraphicsScene*
-    *loadPictureCommand : BaseCommand*
-    *pImg : QImage*
+    * filename :QString
+    * originScene : QGraphicsScene*
+    * loadPictureCommand : BaseCommand*
+    * pImg : QImage*
 * func
     * setLoadPictureCommand(BaseCommand*) : void
     * setImg(Qimage*) : void
