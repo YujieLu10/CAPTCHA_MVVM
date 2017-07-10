@@ -12,6 +12,7 @@
 #Build results
 [Dd]ebug/
 [Rr]elease/
+GeneratedFiles/
 x64/
 build/
 [Oo]bj/
@@ -50,6 +51,7 @@ build/
 *.opensdf
 *.cachefile
 *.sdf
+*.VC.db
 
 # TeamCity is a build add-in
 _TeamCity*

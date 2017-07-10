@@ -40,12 +40,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="View.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_View.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -55,37 +49,42 @@
     <ClCompile Include="GeneratedFiles\qrc_Vcode.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="Commom.cpp">
+    <ClCompile Include="View\View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Observable.cpp">
+    <ClCompile Include="ViewModel\Commands\LoadPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Observer.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="View.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="Vcode.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Vcode.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Commom.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Observable.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Observer.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="GeneratedFiles\ui_Vcode.h">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Commom\Commom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="View\View.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\ViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\Commands\LoadPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
