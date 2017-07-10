@@ -23,7 +23,7 @@
 ### `MVVM模式`
 MVVM模式由视图(View)、视图模型 (ViewModel)、模型(Model)三部分组成，通 过这三部分实现UI逻辑、呈现逻辑和状态控 制、数据与业务逻辑的分离。 
 ### `Model`
-*数据访问层
+数据访问层
 * para
     * Mat m
 * func
@@ -31,7 +31,7 @@ MVVM模式由视图(View)、视图模型 (ViewModel)、模型(Model)三部分组
     * void loadPicture(string)
 
 ### `View`
-*UI界面
+UI界面
 * para
     * filename :QString
     * originScene : QGraphicsScene*
@@ -44,7 +44,7 @@ MVVM模式由视图(View)、视图模型 (ViewModel)、模型(Model)三部分组
     * commandSucceed(bool) : void
 
 ### `View-Model`
-*View的抽象，负责View与 Model之间信息转换，同时将View的 Command传送到Model
+View的抽象，负责View与 Model之间信息转换，同时将View的 Command传送到Model
 * para
     * pImg : QImage*
     * loadPictureCommand : BaseCommand*
