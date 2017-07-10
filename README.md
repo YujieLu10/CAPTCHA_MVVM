@@ -19,11 +19,36 @@
 ![](https://github.com/cubeFUN/Sum/blob/master/img/Frame.jpg)
 ### `MVVM模式`
 ### `Model`
-
+* para
+    * Mat m
+* func
+    * Mat getMat()
+    * void loadPicture(string)
 
 ### `View`
+* para
+    *filename :QString
+    *originScene : QGraphicsScene*
+    *loadPictureCommand : BaseCommand*
+    *pImg : QImage*
+* func
+    * setLoadPictureCommand(BaseCommand*) : void
+    * setImg(Qimage*) : void
+    * update(string) : void
+    * commandSucceed(bool) : void
 
 ### `View-Model`
-
+* para
+    * pImg : QImage*
+    * loadPictureCommand : BaseCommand*
+    * model : Model*
+* func
+    * getLoadPictureCommand() : BaseCommand*
+    * setModel(Model*) : void
+    * loadPicture(string) : void
+    * getpImg() : Qimage*
+    * cvMatToQImage(Mat&) : void
+    * update(string) : void
+    * commandSucceed(bool) : void
 ### `功能效果图`
 
