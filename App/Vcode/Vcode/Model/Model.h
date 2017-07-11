@@ -15,7 +15,7 @@ public:
 	cv::Mat& getMat() { return m; }
 
 	void loadPicture(const string& path) {
-		m = cv::imread(path, 0);
+		m = cv::imread(path, 1);
 		if (m.empty()) {
 			this->notify(false);
 		}

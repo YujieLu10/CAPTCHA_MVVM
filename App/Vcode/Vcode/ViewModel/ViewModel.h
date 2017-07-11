@@ -3,7 +3,7 @@
 #include<Model\model.h>
 #include<ViewModel\Commands\LoadPictureCommand.h>
 #include<QImage>
-#include<fstream>
+
 class ViewModel:public Observable,public Observer
 {
 private:
@@ -66,10 +66,8 @@ public:
 		return QImage();
 
 	}
-	void update(const string& atrribute) {
-		ofstream out1("out1.txt");
-		out1 << atrribute << endl;
-		if (atrribute == "image") {
+	void update(const string& attribute) {
+		if (attribute == "image") {
 			
 			*pImg = cvMatToQImage(model->getMat());
 			if (pImg->isNull()) {

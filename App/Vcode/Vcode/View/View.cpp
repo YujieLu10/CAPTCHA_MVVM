@@ -14,28 +14,38 @@ View::View(QWidget *parent)
 	originScene = new QGraphicsScene();
 	ui.leftOriginView->setScene(originScene);
 	ui.rightOriginView->setScene(originScene);
+
 	connect(ui.importPicAction, &QAction::triggered, this, &View::importPicture);
-	//connect(ui.recognizeButton, SIGNAL(clicked()), this, SLOT(recognizeCode()));
+	connect(ui.recognizeButton, SIGNAL(clicked()), this, SLOT(recognizeCode()));
 }
 void View::importPicture() {
 
 	filename = QFileDialog::getOpenFileName(this, "Select Picture", ".", tr("Images (*.png *.bmp *.jpg *.tif *.GIF )"));
 
 	if (!filename.isEmpty()) {
-
 		shared_ptr<StringParam> sp = make_shared<StringParam>();
 		sp->setPath(filename.toStdString());
-
 		loadPictureCommand->setParams(static_pointer_cast<Param, StringParam>(sp));
-
 		loadPictureCommand->exec();
-
 	}
 }
-void View::update(const string& atrribute) {
-	if (atrribute == "image") {
+
+void View::recognizeCode() {
+	if (!filename.isEmpty()) {
+		shared_ptr<StringParam> sp = make_shared<StringParam>();
+		sp->setPath(filename.toStdString());
+		recognizeCommand->setParams(static_pointer_cast<Param, StringParam>(sp));
+		recognizeCommand->exec();
+	}
+}
+
+void View::update(const string& attribute) {
+	if (attribute == "image") {
 		originScene->clear();
 		originScene->addPixmap(QPixmap::fromImage(pImg->scaled(ui.leftOriginView->width(), ui.leftOriginView->height(), Qt::KeepAspectRatio)));
+	}
+	else if (attribute == "Result") {
+		ui.resultText->setText(recognizeResult);
 	}
 }
 void View::commandSucceed(bool flag) {
