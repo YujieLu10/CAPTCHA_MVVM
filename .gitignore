@@ -11,8 +11,8 @@
 *.sln.docstates
 
 #Build results
-[Dd]ebug/
-[Rr]elease/
+Win32/
+*.tlog
 x64/
 build/
 [Oo]bj/
