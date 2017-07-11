@@ -1,7 +1,6 @@
 #pragma once
 #include<Common\Common.h>
 #include<opencv2\opencv.hpp>
-#include<qdebug.h>
 #include<fstream>
 #include<exception>
 using namespace std;
