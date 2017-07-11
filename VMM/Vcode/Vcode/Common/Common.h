@@ -80,7 +80,7 @@ namespace Binary {
 }
 namespace Denoise {
 	enum {
-		HALF_RADIUS = 5
+		HALF_RADIUS = 1
 	};
 }
 

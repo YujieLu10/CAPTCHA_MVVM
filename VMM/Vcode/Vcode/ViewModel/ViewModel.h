@@ -1,8 +1,9 @@
 #pragma once
-#include<Common\Common.h>
-#include<Model\model.h>
-#include<ViewModel\Commands\LoadPictureCommand.h>
-#include<ViewModel\Commands\ProcessPictureCommand.h>
+#include<Common/Common.h>
+#include<Model/model.h>
+#include<ViewModel/Commands/LoadPictureCommand.h>
+#include<ViewModel/Commands/ProcessPictureCommand.h>
+#include<ViewModel/Commands/SolvePictureCommand.h>
 #include<QImage>
 #include<fstream>
 class ViewModel:public Observable,public Observer
@@ -13,8 +14,12 @@ private:
 	shared_ptr<QImage> pRemoveBGImg;
 	shared_ptr<QImage> pDenoiseImg;
 	shared_ptr<QImage> pBinaryImg;
+	QString* res;
+
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<BaseCommand> processPictureCommand;
+	shared_ptr<BaseCommand> solvePictureCommand;
+
 	shared_ptr<Model> model;
 public:
 	
@@ -24,14 +29,19 @@ public:
 	shared_ptr<BaseCommand> getProcessPictureCommand() {
 		return processPictureCommand;
 	}
+	shared_ptr<BaseCommand> getSolvePictureCommand() {
+		return solvePictureCommand;
+	}
 	ViewModel() {
 		loadPictureCommand =static_pointer_cast<BaseCommand,LoadPictureCommand>(shared_ptr<LoadPictureCommand>(new LoadPictureCommand(this)));
 		processPictureCommand = static_pointer_cast<BaseCommand, ProcessPictureCommand>(shared_ptr<ProcessPictureCommand>(new ProcessPictureCommand(this)));
+		solvePictureCommand = static_pointer_cast<BaseCommand, SolvePictureCommand>(shared_ptr<SolvePictureCommand>(new SolvePictureCommand(this)));
 		pImg = shared_ptr<QImage>(new QImage());
 		pGrayImg = shared_ptr<QImage>(new QImage());
 		pRemoveBGImg = shared_ptr<QImage>(new QImage());
 		pDenoiseImg = shared_ptr<QImage>(new QImage());
 		pBinaryImg = shared_ptr<QImage>(new QImage());
+		res = new QString();
 	}
 	~ViewModel() {
 		
@@ -45,11 +55,15 @@ public:
 	void processPicture(int grayType) {
 		model->processPicture(grayType);
 	}
+	void solvePicture() {
+		model->solvePicture();
+	}
 	shared_ptr<QImage> getpImg() { return pImg; }
 	shared_ptr<QImage> getpGrayImg() { return pGrayImg; }
 	shared_ptr<QImage> getpRemoveBGImg() { return pRemoveBGImg; }
 	shared_ptr<QImage> getpDenoiseImg() { return pDenoiseImg; }
 	shared_ptr<QImage> getpBinaryImg() { return pBinaryImg; }
+	QString* getRes() { return res; }
 	QImage cvMatToQImage(const cv::Mat &inMat)
 	{
 		switch (inMat.type())
@@ -108,6 +122,16 @@ public:
 			}
 			else {
 				string s = "process";
+				notify(s);
+			}
+		}
+		else if (attribute == "result") {
+			*res = model->getRes().c_str();
+			if (*res == "") {
+				notify(false);
+			}
+			else {
+				string s = "result";
 				notify(s);
 			}
 		}
