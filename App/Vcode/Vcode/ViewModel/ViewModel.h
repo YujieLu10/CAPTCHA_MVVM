@@ -2,23 +2,36 @@
 #include<Commom\Commom.h>
 #include<Model\model.h>
 #include<ViewModel\Commands\LoadPictureCommand.h>
+#include<ViewModel\Commands\ProcessPictureCommand.h>
 #include<QImage>
-
+#include<fstream>
 class ViewModel:public Observable,public Observer
 {
 private:
 	shared_ptr<QImage> pImg;
+	shared_ptr<QImage> pGrayImg;
+	shared_ptr<QImage> pRemoveBGImg;
+	shared_ptr<QImage> pDenoiseImg;
+	shared_ptr<QImage> pBinaryImg;
 	shared_ptr<BaseCommand> loadPictureCommand;
+	shared_ptr<BaseCommand> processPictureCommand;
 	shared_ptr<Model> model;
 public:
 	
 	shared_ptr<BaseCommand> getLoadPictureCommand() {
 		return loadPictureCommand;
 	}
-	
+	shared_ptr<BaseCommand> getProcessPictureCommand() {
+		return processPictureCommand;
+	}
 	ViewModel() {
 		loadPictureCommand =static_pointer_cast<BaseCommand,LoadPictureCommand>(shared_ptr<LoadPictureCommand>(new LoadPictureCommand(this)));
+		processPictureCommand = static_pointer_cast<BaseCommand, ProcessPictureCommand>(shared_ptr<ProcessPictureCommand>(new ProcessPictureCommand(this)));
 		pImg = shared_ptr<QImage>(new QImage());
+		pGrayImg = shared_ptr<QImage>(new QImage());
+		pRemoveBGImg = shared_ptr<QImage>(new QImage());
+		pDenoiseImg = shared_ptr<QImage>(new QImage());
+		pBinaryImg = shared_ptr<QImage>(new QImage());
 	}
 	~ViewModel() {
 		
@@ -29,7 +42,14 @@ public:
 	void loadPicture(const string& path) {
 		model->loadPicture(path);
 	}
+	void processPicture(int grayType) {
+		model->processPicture(grayType);
+	}
 	shared_ptr<QImage> getpImg() { return pImg; }
+	shared_ptr<QImage> getpGrayImg() { return pGrayImg; }
+	shared_ptr<QImage> getpRemoveBGImg() { return pRemoveBGImg; }
+	shared_ptr<QImage> getpDenoiseImg() { return pDenoiseImg; }
+	shared_ptr<QImage> getpBinaryImg() { return pBinaryImg; }
 	QImage cvMatToQImage(const cv::Mat &inMat)
 	{
 		switch (inMat.type())
@@ -75,6 +95,16 @@ public:
 			}
 			else {
 				string s = "image";
+				notify(s);
+			}
+		}
+		else if (attribute == "process") {
+			*pGrayImg = cvMatToQImage(model->getGrayMat());
+			if (pImg->isNull()) {
+				notify(false);
+			}
+			else {
+				string s = "process";
 				notify(s);
 			}
 		}

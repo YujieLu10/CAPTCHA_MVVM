@@ -32,13 +32,6 @@ private:
 
 	vector<shared_ptr<Observer> >observerList;
 public:
-	Observable() {
-
-	}
-	~Observable() {
-
-	}
-
 	void addObserver(shared_ptr<Observer> pobj) {
 		observerList.push_back(pobj);
 	}
@@ -65,5 +58,23 @@ public:
 	}
 	string getPath() {
 		return path;
+	}
+};
+
+namespace GrayType {
+	enum type{
+		GRAY_AVERAGE, GRAY_MAX, GRAY_WEIGHTAVE
+	};
+}
+
+class GrayTypeParam :public Param {
+private:
+	int T;
+public:
+	void setType(int t) {
+		T = t;
+	}
+	int getType(){
+		return T;
 	}
 };

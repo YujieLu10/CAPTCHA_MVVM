@@ -58,7 +58,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewModel\Commands\recognizeCommand.cpp">
+    <ClCompile Include="ViewModel\Commands\ProcessPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,25 +72,27 @@
     <CustomBuild Include="GeneratedFiles\ui_Vcode.h">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Commom\Commom.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Model\Model.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\Commands\LoadPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\ViewModel.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="View\View.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="logo2.ico" />
+    <CustomBuild Include="ViewModel\Commands\ProcessPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Commom\Commom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Model\Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="View\View.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewModel\ViewModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewModel\Commands\LoadPictureCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewModel\Commands\recognizeCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ResourceCompile Include="logo2.rc" />
   </ItemGroup>
 </Project>
