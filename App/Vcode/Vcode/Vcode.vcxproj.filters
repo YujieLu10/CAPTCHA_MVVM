@@ -29,22 +29,19 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{27ead1b7-135b-45ec-b0b0-58f33c0d1bf6}</UniqueIdentifier>
+      <UniqueIdentifier>{9d148517-5445-4dc1-9ebf-b026fb5d8299}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{60549d1e-a2eb-461b-ae21-a79fa81eb76e}</UniqueIdentifier>
+      <UniqueIdentifier>{751b2bdc-3588-4043-ba88-28000c640392}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\Debug\moc_View.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_View.cpp">
-      <Filter>Generated Files\Release</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_Vcode.cpp">
       <Filter>Generated Files</Filter>
@@ -52,13 +49,22 @@
     <ClCompile Include="View\View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_View.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_View.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
     <ClCompile Include="ViewModel\Commands\LoadPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ViewModel\Commands\ProcessPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewModel\Commands\ProcessPictureCommand.cpp">
+    <ClCompile Include="ViewModel\Commands\SolvePictureCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,18 +75,6 @@
     <CustomBuild Include="Vcode.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\ui_Vcode.h">
-      <Filter>Generated Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Model\Model.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ViewModel\Commands\LoadPictureCommand.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ViewModel\ViewModel.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="View\View.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -88,8 +82,23 @@
     <CustomBuild Include="Common\Common.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Model\Model.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\Commands\LoadPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="ViewModel\Commands\ProcessPictureCommand.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\Commands\SolvePictureCommand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\ViewModel.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_Vcode.h">
+      <Filter>Generated Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
