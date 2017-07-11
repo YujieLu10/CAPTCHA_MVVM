@@ -13,8 +13,6 @@ class Param {
 
 class BaseCommand {
 public:
-
-
 	virtual void setParams(const shared_ptr<Param>& p) = 0;
 	virtual void exec() = 0;
 };

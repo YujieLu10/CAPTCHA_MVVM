@@ -16,6 +16,9 @@ public:
 	void setImg(shared_ptr<QImage> p) {
 		pImg = p;
 	}
+	void setRecognizeCommand(shared_ptr<BaseCommand> p) {
+		recognizeCommand = p;
+	}
 private:
 	Ui::ViewClass ui;
 	QString filename;
@@ -23,11 +26,14 @@ private:
 
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<QImage> pImg;
-	void update(const string& atrribute);
+	shared_ptr<BaseCommand> recognizeCommand;
+	QString recognizeResult;
+
+	void update(const string& attribute);
 	virtual void commandSucceed(bool flag);
 
 
 private slots:
-
 	void importPicture();
+	void recognizeCode();
 };

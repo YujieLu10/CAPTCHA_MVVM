@@ -84,6 +84,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ViewModel\Commands\LoadPictureCommand.cpp" />
+    <ClCompile Include="ViewModel\Commands\recognizeCommand.cpp" />
     <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +133,7 @@
     <ClInclude Include="Commom\Commom.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="ViewModel\Commands\LoadPictureCommand.h" />
+    <ClInclude Include="ViewModel\Commands\recognizeCommand.h" />
     <ClInclude Include="ViewModel\ViewModel.h" />
     <ClInclude Include="View\View.h" />
   </ItemGroup>

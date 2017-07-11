@@ -32,7 +32,7 @@
        <x>110</x>
        <y>50</y>
        <width>256</width>
-       <height>192</height>
+       <height>190</height>
       </rect>
      </property>
     </widget>
@@ -57,8 +57,8 @@
       <rect>
        <x>110</x>
        <y>450</y>
-       <width>261</width>
-       <height>201</height>
+       <width>256</width>
+       <height>200</height>
       </rect>
      </property>
     </widget>
@@ -138,9 +138,9 @@
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>41</y>
+       <y>40</y>
        <width>256</width>
-       <height>171</height>
+       <height>190</height>
       </rect>
      </property>
     </widget>
@@ -244,7 +244,7 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton">
+    <widget class="QRadioButton" name="meanRadioButton">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -260,7 +260,7 @@
       <string>平均值法</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="maxRadioButton">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -276,7 +276,7 @@
       <string>最大值法</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_3">
+    <widget class="QRadioButton" name="weightRadioButton">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -325,7 +325,7 @@
     </property>
     <addaction name="importPicAction"/>
     <addaction name="separator"/>
-    <addaction name="action_2"/>
+    <addaction name="quitAction"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -355,7 +355,7 @@
     <string>导入图片</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="quitAction">
    <property name="text">
     <string>退出</string>
    </property>

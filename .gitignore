@@ -10,11 +10,11 @@
 *.sln.docstates
 
 #Build results
-[Dd]ebug/
-[Rr]elease/
 x64/
+Win32/
 build/
 [Oo]bj/
+*.tlog
 
 #Visual Studio profiler
 *.psess
