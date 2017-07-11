@@ -7,15 +7,15 @@
 
 # User-specific files
 *.suo
-*.user
 *.sln.docstates
 
 #Build results
-Win32/
-*.tlog
+
 x64/
+Win32/
 build/
 [Oo]bj/
+*.tlog
 
 #Visual Studio profiler
 *.psess
@@ -51,6 +51,7 @@ build/
 *.opensdf
 *.cachefile
 *.sdf
+*.VC.db
 
 # TeamCity is a build add-in
 _TeamCity*
