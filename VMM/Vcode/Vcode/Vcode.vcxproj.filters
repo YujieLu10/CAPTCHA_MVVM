@@ -23,47 +23,41 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Generated Files">
-      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
-      <Extensions>moc;h;cpp</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
-    </Filter>
-    <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{27ead1b7-135b-45ec-b0b0-58f33c0d1bf6}</UniqueIdentifier>
-      <Extensions>cpp;moc</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
-    </Filter>
-    <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{60549d1e-a2eb-461b-ae21-a79fa81eb76e}</UniqueIdentifier>
-      <Extensions>cpp;moc</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ViewModel\Commands\LoadPictureCommand.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ViewModel\Commands\LoadPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ViewModel\Commands\ProcessPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ViewModel\Commands\SolvePictureCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="Common\Common.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="Model\Model.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="ViewModel\Commands\LoadPictureCommand.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="ViewModel\ViewModel.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Common\Common.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="ViewModel\Commands\ProcessPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\Commands\SolvePictureCommand.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ViewModel\ViewModel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
