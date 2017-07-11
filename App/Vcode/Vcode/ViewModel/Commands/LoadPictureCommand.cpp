@@ -1,5 +1,5 @@
-#include<ViewModel\Commands\LoadPictureCommand.h>
-#include<ViewModel\ViewModel.h>
+#include<ViewModel/Commands/LoadPictureCommand.h>
+#include<ViewModel/ViewModel.h>
 LoadPictureCommand::LoadPictureCommand(ViewModel* p):pvm(p){}
 void LoadPictureCommand::exec() {
 	shared_ptr<StringParam> sp= static_pointer_cast<StringParam, Param>(params);

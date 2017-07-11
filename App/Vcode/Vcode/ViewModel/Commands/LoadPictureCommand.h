@@ -1,5 +1,5 @@
 #pragma once
-#include<Common\Common.h>
+#include<Common/Common.h>
 #include<qdebug.h>
 class ViewModel;
 class LoadPictureCommand :public BaseCommand {
