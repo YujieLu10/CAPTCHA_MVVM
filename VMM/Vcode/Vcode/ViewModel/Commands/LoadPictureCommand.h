@@ -1,5 +1,6 @@
 #pragma once
 #include<Common\Common.h>
+
 class ViewModel;
 class LoadPictureCommand :public BaseCommand {
 private:
