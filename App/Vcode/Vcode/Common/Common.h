@@ -67,6 +67,24 @@ namespace GrayType {
 	};
 }
 
+namespace RemoveBG {
+	enum {
+		THRESHOLD=200
+	};
+}
+
+namespace Binary {
+	enum {
+		THRESHOLD = 200
+	};
+}
+namespace Denoise {
+	enum {
+		HALF_RADIUS = 5
+	};
+}
+
+
 class GrayTypeParam :public Param {
 private:
 	int T;

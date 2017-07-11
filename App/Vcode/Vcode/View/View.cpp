@@ -19,12 +19,12 @@ View::View(QWidget *parent)
 
 	ui.leftOriginView->setScene(originScene);
 	ui.rightOriginView->setScene(originScene);
-	/*ui.binaryzationView->setScene(binaryScene);
+	ui.binaryzationView->setScene(binaryScene);
 	ui.denoiseView->setScene(denoiseScene);
-	ui.removeBgView->setScene(removeBGScene);*/
-	ui.binaryzationView->setScene(grayScene);
+	ui.removeBgView->setScene(removeBGScene);
+	/*ui.binaryzationView->setScene(grayScene);
 	ui.denoiseView->setScene(grayScene);
-	ui.removeBgView->setScene(grayScene);
+	ui.removeBgView->setScene(grayScene);*/
 	ui.grayView->setScene(grayScene);
 	connect(ui.importPicAction, &QAction::triggered, this, &View::importPicture);
 	connect(ui.confirmButton, &QPushButton::clicked, this, &View::processPicture);

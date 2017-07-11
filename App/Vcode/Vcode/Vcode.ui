@@ -104,7 +104,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="denoiseView">
+    <widget class="QGraphicsView" name="binaryzationView">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -124,7 +124,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="binaryzationView">
+    <widget class="QGraphicsView" name="denoiseView">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -182,7 +182,7 @@
       <enum>QFrame::Box</enum>
      </property>
      <property name="text">
-      <string>去噪点</string>
+      <string>二值化</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -204,7 +204,7 @@
       <enum>QFrame::Box</enum>
      </property>
      <property name="text">
-      <string>二值化</string>
+      <string>去噪点</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
