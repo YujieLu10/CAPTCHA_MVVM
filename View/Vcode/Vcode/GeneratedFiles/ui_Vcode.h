@@ -33,7 +33,9 @@ class Ui_ViewClass
 {
 public:
     QAction *importPicAction;
-    QAction *action_2;
+    QAction *exitAction;
+    QAction *action;
+    QAction *action_3;
     QWidget *centralWidget;
     QGroupBox *groupBox;
     QGraphicsView *leftOriginView;
@@ -56,9 +58,8 @@ public:
     QLabel *label_6;
     QPushButton *confirmButton;
     QMenuBar *menuBar;
-    QMenu *menu;
-    QMenu *menu_2;
-    QMenu *menu_3;
+    QMenu *file;
+    QMenu *help;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -69,8 +70,12 @@ public:
         ViewClass->resize(1071, 790);
         importPicAction = new QAction(ViewClass);
         importPicAction->setObjectName(QStringLiteral("importPicAction"));
-        action_2 = new QAction(ViewClass);
-        action_2->setObjectName(QStringLiteral("action_2"));
+        exitAction = new QAction(ViewClass);
+        exitAction->setObjectName(QStringLiteral("exitAction"));
+        action = new QAction(ViewClass);
+        action->setObjectName(QStringLiteral("action"));
+        action_3 = new QAction(ViewClass);
+        action_3->setObjectName(QStringLiteral("action_3"));
         centralWidget = new QWidget(ViewClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
@@ -160,12 +165,10 @@ public:
         menuBar = new QMenuBar(ViewClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1071, 26));
-        menu = new QMenu(menuBar);
-        menu->setObjectName(QStringLiteral("menu"));
-        menu_2 = new QMenu(menuBar);
-        menu_2->setObjectName(QStringLiteral("menu_2"));
-        menu_3 = new QMenu(menuBar);
-        menu_3->setObjectName(QStringLiteral("menu_3"));
+        file = new QMenu(menuBar);
+        file->setObjectName(QStringLiteral("file"));
+        help = new QMenu(menuBar);
+        help->setObjectName(QStringLiteral("help"));
         ViewClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(ViewClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -174,12 +177,14 @@ public:
         statusBar->setObjectName(QStringLiteral("statusBar"));
         ViewClass->setStatusBar(statusBar);
 
-        menuBar->addAction(menu->menuAction());
-        menuBar->addAction(menu_2->menuAction());
-        menuBar->addAction(menu_3->menuAction());
-        menu->addAction(importPicAction);
-        menu->addSeparator();
-        menu->addAction(action_2);
+        menuBar->addAction(file->menuAction());
+        menuBar->addAction(help->menuAction());
+        file->addAction(importPicAction);
+        file->addSeparator();
+        file->addAction(exitAction);
+        help->addAction(action);
+        help->addSeparator();
+        help->addAction(action_3);
 
         retranslateUi(ViewClass);
 
@@ -190,7 +195,9 @@ public:
     {
         ViewClass->setWindowTitle(QApplication::translate("ViewClass", "App", 0));
         importPicAction->setText(QApplication::translate("ViewClass", "\345\257\274\345\205\245\345\233\276\347\211\207", 0));
-        action_2->setText(QApplication::translate("ViewClass", "\351\200\200\345\207\272", 0));
+        exitAction->setText(QApplication::translate("ViewClass", "\351\200\200\345\207\272", 0));
+        action->setText(QApplication::translate("ViewClass", "\346\215\220\345\212\251", 0));
+        action_3->setText(QApplication::translate("ViewClass", "\345\205\263\344\272\216", 0));
         groupBox->setTitle(QString());
         recognizeButton->setText(QApplication::translate("ViewClass", "\345\274\200\345\247\213\350\257\206\345\210\253", 0));
         label->setText(QApplication::translate("ViewClass", "\350\257\206\345\210\253\347\273\223\346\236\234", 0));
@@ -204,9 +211,8 @@ public:
         weightAveButton->setText(QApplication::translate("ViewClass", "\345\212\240\346\235\203\345\271\263\345\235\207", 0));
         label_6->setText(QApplication::translate("ViewClass", "\347\201\260\345\272\246\346\226\271\345\274\217", 0));
         confirmButton->setText(QApplication::translate("ViewClass", "\347\241\256\345\256\232", 0));
-        menu->setTitle(QApplication::translate("ViewClass", "\346\226\207\344\273\266", 0));
-        menu_2->setTitle(QApplication::translate("ViewClass", "\350\256\276\347\275\256", 0));
-        menu_3->setTitle(QApplication::translate("ViewClass", "\345\270\256\345\212\251", 0));
+        file->setTitle(QApplication::translate("ViewClass", "\346\226\207\344\273\266", 0));
+        help->setTitle(QApplication::translate("ViewClass", "\345\270\256\345\212\251", 0));
     } // retranslateUi
 
 };

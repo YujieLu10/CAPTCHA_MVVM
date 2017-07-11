@@ -1,4 +1,4 @@
-#include <View\View.h>
+#include <View/View.h>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <qdebug.h>
@@ -10,25 +10,26 @@ View::View(QWidget *parent)
 	ui.setupUi(this);
 	ui.importPicAction->setShortcuts(QKeySequence::Open);
 	ui.importPicAction->setStatusTip(tr("Import a picture of verification code"));
-
+	ui.exitAction->setShortcuts(QKeySequence::Close);
 	originScene = new QGraphicsScene();
 	grayScene = new QGraphicsScene();
 	denoiseScene = new QGraphicsScene();
 	removeBGScene = new QGraphicsScene();
 	binaryScene = new QGraphicsScene();
-
+	//禁止最大化窗口
+	setWindowFlags(windowFlags()& ~Qt::WindowMaximizeButtonHint);
+	
 	ui.leftOriginView->setScene(originScene);
 	ui.rightOriginView->setScene(originScene);
 	ui.binaryzationView->setScene(binaryScene);
 	ui.denoiseView->setScene(denoiseScene);
 	ui.removeBgView->setScene(removeBGScene);
-	/*ui.binaryzationView->setScene(grayScene);
-	ui.denoiseView->setScene(grayScene);
-	ui.removeBgView->setScene(grayScene);*/
 	ui.grayView->setScene(grayScene);
 	connect(ui.importPicAction, &QAction::triggered, this, &View::importPicture);
 	connect(ui.confirmButton, &QPushButton::clicked, this, &View::processPicture);
-	//connect(ui.recognizeButton, SIGNAL(clicked()), this, SLOT(recognizeCode()));
+	connect(ui.recognizeButton,&QPushButton::clicked, this, &View::solvePicture);
+	connect(ui.exitAction, &QAction::triggered, this, &View::close);
+	
 }
 void View::processPicture() {
 	/*shared_ptr<StringParam> sp = make_shared<StringParam>();
@@ -65,6 +66,9 @@ void View::importPicture() {
 		loadPictureCommand->exec();
 	}
 }
+void View::solvePicture(){
+	solvePictureCommand->exec();
+}
 void View::update(const string& attribute) {
 	if (attribute == "image") {
 		originScene->clear();
@@ -79,6 +83,9 @@ void View::update(const string& attribute) {
 		removeBGScene->addPixmap(QPixmap::fromImage(pRemoveBGImg->scaled(ui.removeBgView->width(), ui.removeBgView->height(), Qt::KeepAspectRatio)));
 		binaryScene->clear();
 		binaryScene->addPixmap(QPixmap::fromImage(pBinaryImg->scaled(ui.binaryzationView->width(), ui.binaryzationView->height(), Qt::KeepAspectRatio)));
+	}
+	else if (attribute == "result") {
+		ui.resultText->setText(*res);
 	}
 }
 void View::commandSucceed(bool flag) {
