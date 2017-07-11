@@ -11,6 +11,8 @@
 
 #Build results
 [Dd]ebug/
+!GeneratedFiles/Debug/
+!GeneratedFiles/Release/
 [Rr]elease/
 x64/
 build/
