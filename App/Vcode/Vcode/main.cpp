@@ -25,16 +25,13 @@ int main(int argc, char *argv[])
 	pm->addObserver(static_pointer_cast<Observer, ViewModel>(pvm));
 	pvm->addObserver(static_pointer_cast<Observer, View>(pv));
 
-	/*QFrame* fm = new QFrame();
-	fm->resize(1071, 790);
-	QPixmap pixmap("image/bg.png");
-	QPalette qp;
-	qp.setBrush(fm->backgroundRole(), QBrush(pixmap));
-	fm->setPalette(qp);
-	fm->setMask(pixmap.mask());
-	fm->setAutoFillBackground(true);
 	
-	fm->show();*/
+	/*QPixmap pixmap("image/bg.png");
+	QPalette qp;
+	qp.setBrush(pv->backgroundRole(), QBrush(pixmap));
+	pv->setPalette(qp);
+	pv->setMask(pixmap.mask());
+	pv->setAutoFillBackground(true);*/
 	pv->show();
 	return a.exec();
 }

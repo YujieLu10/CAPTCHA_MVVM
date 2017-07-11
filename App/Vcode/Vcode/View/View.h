@@ -1,6 +1,6 @@
 #pragma once
 #include "ui_Vcode.h"
-#include <Commom\Commom.h>
+#include <Common\Common.h>
 #include <QtWidgets/QMainWindow>
 
 class View : public QMainWindow, public Observer

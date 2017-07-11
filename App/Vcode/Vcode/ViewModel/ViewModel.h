@@ -1,5 +1,5 @@
 #pragma once
-#include<Commom\Commom.h>
+#include<Common\Common.h>
 #include<Model\model.h>
 #include<ViewModel\Commands\LoadPictureCommand.h>
 #include<ViewModel\Commands\ProcessPictureCommand.h>
@@ -100,7 +100,10 @@ public:
 		}
 		else if (attribute == "process") {
 			*pGrayImg = cvMatToQImage(model->getGrayMat());
-			if (pImg->isNull()) {
+			*pRemoveBGImg = cvMatToQImage(model->getRemoveBGMat());
+			*pDenoiseImg = cvMatToQImage(model->getDenoiseMat());
+			*pBinaryImg = cvMatToQImage(model->getBinaryMat());
+			if (pGrayImg->isNull()) {
 				notify(false);
 			}
 			else {
