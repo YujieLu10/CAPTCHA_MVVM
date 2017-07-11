@@ -1,6 +1,6 @@
 #pragma once
 #include "ui_Vcode.h"
-#include <Common\Common.h>
+#include <Common/Common.h>
 #include <QtWidgets/QMainWindow>
 
 class View : public QMainWindow, public Observer
@@ -15,6 +15,9 @@ public:
 	}
 	void setProcessPictureCommand(shared_ptr<BaseCommand> p) {
 		processPictureCommand = p;
+	}
+	void setSolvePictureCommand(shared_ptr<BaseCommand>p) {
+		solvePictureCommand = p;
 	}
 	void setImg(shared_ptr<QImage> p) {
 		pImg = p;
@@ -31,6 +34,9 @@ public:
 	void setBinaryImg(shared_ptr<QImage> p) {
 		pBinaryImg = p;
 	}
+	void setRes(QString* s) {
+		res = s;
+	}
 private:
 	Ui::ViewClass ui;
 	QString filename;
@@ -40,9 +46,12 @@ private:
 	QGraphicsScene* denoiseScene;
 	QGraphicsScene* removeBGScene;
 	QGraphicsScene* binaryScene;
+	QString* res;
 
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<BaseCommand> processPictureCommand;
+	shared_ptr<BaseCommand> solvePictureCommand;
+
 
 	shared_ptr<QImage> pImg;
 	shared_ptr<QImage> pGrayImg;
@@ -55,4 +64,5 @@ private:
 	private slots:
 	void processPicture();
 	void importPicture();
+	void solvePicture();
 };
