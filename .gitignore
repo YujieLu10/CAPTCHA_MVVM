@@ -15,7 +15,8 @@ x64/
 Win32/
 build/
 [Oo]bj/
-*.tlog
+Vcode.tlog/
+*.res
 
 #Visual Studio profiler
 *.psess
