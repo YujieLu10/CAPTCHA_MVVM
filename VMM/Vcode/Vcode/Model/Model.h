@@ -5,7 +5,16 @@
 #include<fstream>
 #include<exception>
 #include<string>
-
+class QException :public exception {
+private:
+	string errorMessage;
+public:
+	QException(string s=""):errorMessage(s){}
+	void setErrorMes(string s){
+		errorMessage = s;
+	}
+	string getErrorMes() { return errorMessage; }
+};
 using namespace std;
 class Model :public Observable
 {
@@ -16,6 +25,7 @@ protected:
 	cv::Mat removeBGm;
 	cv::Mat binarym;
 	string res;
+	QException e;
 public:
 	Model() {}
 	~Model() {}
@@ -25,10 +35,12 @@ public:
 	cv::Mat& getDenoiseMat() { return denoisem; }
 	cv::Mat& getRemoveBGMat() { return removeBGm; }
 	cv::Mat& getBinaryMat() { return binarym; }
+	QException& getException() { return e; }
 	string getRes() { return res; }
 	void loadPicture(const string& path) {
 		m = cv::imread(path, 1);
 		if (m.empty()) {
+			e.setErrorMes("Load picture failed!");
 			this->notify(false);
 		}
 		else {
