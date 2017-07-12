@@ -48,7 +48,7 @@ public:
 			this->notify(s);
 		}
 	}
-	void processPicture(int grayType);
+	void processPicture(int grayType, int removet, int binaryt, int denoiser);
 	void solvePicture();
 	void saveResult(string savePath);
 };
