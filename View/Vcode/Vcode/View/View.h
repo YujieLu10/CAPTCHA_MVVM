@@ -19,6 +19,11 @@ public:
 	void setSolvePictureCommand(shared_ptr<BaseCommand>p) {
 		solvePictureCommand = p;
 	}
+
+	void setSaveFileCommand(shared_ptr<BaseCommand> p) {
+		saveFileCommand = p;
+	}
+
 	void setImg(shared_ptr<QImage> p) {
 		pImg = p;
 	}
@@ -51,6 +56,7 @@ private:
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<BaseCommand> processPictureCommand;
 	shared_ptr<BaseCommand> solvePictureCommand;
+	shared_ptr<BaseCommand> saveFileCommand;
 
 
 	shared_ptr<QImage> pImg;
@@ -65,4 +71,8 @@ private:
 	void processPicture();
 	void importPicture();
 	void solvePicture();
+	void saveFile();
+	void guideText();
+	void aboutText();
+	void donateText();
 };

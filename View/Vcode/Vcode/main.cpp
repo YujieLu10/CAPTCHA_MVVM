@@ -11,12 +11,10 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 
 	shared_ptr<View> pv(new View);
-	//initial
 
-	//
+	//initial
 	QPixmap initialPixmap("image\\bg.png");
 	QSplashScreen splash(initialPixmap);
-//	splash.resize(500, 300);
 	splash.show();
 	QElapsedTimer timer;
 	timer.start();

@@ -34,8 +34,10 @@ class Ui_ViewClass
 public:
     QAction *importPicAction;
     QAction *exitAction;
-    QAction *action;
-    QAction *action_3;
+    QAction *donateAction;
+    QAction *aboutAction;
+    QAction *guideAction;
+    QAction *saveAction;
     QWidget *centralWidget;
     QGroupBox *groupBox;
     QGraphicsView *leftOriginView;
@@ -72,10 +74,14 @@ public:
         importPicAction->setObjectName(QStringLiteral("importPicAction"));
         exitAction = new QAction(ViewClass);
         exitAction->setObjectName(QStringLiteral("exitAction"));
-        action = new QAction(ViewClass);
-        action->setObjectName(QStringLiteral("action"));
-        action_3 = new QAction(ViewClass);
-        action_3->setObjectName(QStringLiteral("action_3"));
+        donateAction = new QAction(ViewClass);
+        donateAction->setObjectName(QStringLiteral("donateAction"));
+        aboutAction = new QAction(ViewClass);
+        aboutAction->setObjectName(QStringLiteral("aboutAction"));
+        guideAction = new QAction(ViewClass);
+        guideAction->setObjectName(QStringLiteral("guideAction"));
+        saveAction = new QAction(ViewClass);
+        saveAction->setObjectName(QStringLiteral("saveAction"));
         centralWidget = new QWidget(ViewClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
@@ -180,11 +186,13 @@ public:
         menuBar->addAction(file->menuAction());
         menuBar->addAction(help->menuAction());
         file->addAction(importPicAction);
+        file->addAction(saveAction);
         file->addSeparator();
         file->addAction(exitAction);
-        help->addAction(action);
+        help->addAction(donateAction);
+        help->addAction(guideAction);
         help->addSeparator();
-        help->addAction(action_3);
+        help->addAction(aboutAction);
 
         retranslateUi(ViewClass);
 
@@ -196,8 +204,10 @@ public:
         ViewClass->setWindowTitle(QApplication::translate("ViewClass", "App", 0));
         importPicAction->setText(QApplication::translate("ViewClass", "\345\257\274\345\205\245\345\233\276\347\211\207", 0));
         exitAction->setText(QApplication::translate("ViewClass", "\351\200\200\345\207\272", 0));
-        action->setText(QApplication::translate("ViewClass", "\346\215\220\345\212\251", 0));
-        action_3->setText(QApplication::translate("ViewClass", "\345\205\263\344\272\216", 0));
+        donateAction->setText(QApplication::translate("ViewClass", "\346\215\220\345\212\251", 0));
+        aboutAction->setText(QApplication::translate("ViewClass", "\345\205\263\344\272\216", 0));
+        guideAction->setText(QApplication::translate("ViewClass", "\346\214\207\345\215\227", 0));
+        saveAction->setText(QApplication::translate("ViewClass", "\344\277\235\345\255\230\346\226\207\344\273\266", 0));
         groupBox->setTitle(QString());
         recognizeButton->setText(QApplication::translate("ViewClass", "\345\274\200\345\247\213\350\257\206\345\210\253", 0));
         label->setText(QApplication::translate("ViewClass", "\350\257\206\345\210\253\347\273\223\346\236\234", 0));
