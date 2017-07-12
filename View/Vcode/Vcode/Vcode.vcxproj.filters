@@ -66,12 +66,6 @@
     <CustomBuild Include="View\View.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Common\Common.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\ui_Vcode.h">
-      <Filter>Generated Files</Filter>
-    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Image Include="VClogo.ico">
@@ -82,5 +76,13 @@
     <ResourceCompile Include="VClogo.rc">
       <Filter>Source Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_Vcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
