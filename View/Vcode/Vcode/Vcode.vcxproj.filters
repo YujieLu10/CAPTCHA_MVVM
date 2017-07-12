@@ -66,7 +66,6 @@
     <CustomBuild Include="View\View.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="logo2.ico" />
     <CustomBuild Include="Common\Common.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -75,6 +74,13 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="logo2.rc" />
+    <Image Include="VClogo.ico">
+      <Filter>Source Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VClogo.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
