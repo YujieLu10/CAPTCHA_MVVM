@@ -181,10 +181,31 @@ void Model::solvePicture(){
 		res = api->GetUTF8Text();
 		api->End();
 		pixDestroy(&image);
+		if (remove("denoise.jpg")) {
+			throw exception();
+		}
 		string s = "result";
 		this->notify(s);
 	}
 	catch (...) {
 		this->notify(false);
+	}
+}
+void Model::saveResult(string savePath) {
+	try {
+		if (savePath.empty()) {
+			throw exception();
+		}
+		ofstream out(savePath);
+		if(out.bad()) {
+			throw exception();
+		}
+		if (res == "") {
+			throw exception();
+		}
+		out << res;
+	}
+	catch (...) {
+		notify(false);
 	}
 }
