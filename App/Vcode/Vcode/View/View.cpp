@@ -2,7 +2,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <qdebug.h>
-
+#include<qlayout.h>
 
 View::View(QWidget *parent)
 	: QMainWindow(parent)
@@ -16,24 +16,70 @@ View::View(QWidget *parent)
 	denoiseScene = new QGraphicsScene();
 	removeBGScene = new QGraphicsScene();
 	binaryScene = new QGraphicsScene();
+
+	errorMessage = new QString;
+
+	//guide window
+	guideWindow = new QWidget;
+	guideLayout = new QVBoxLayout;
+	guideLabel = new QLabel;
+	guidePixmap = new QPixmap("image\\guide.jpg");
+	guideLabel->setPixmap(*guidePixmap);
+	guideLayout->addWidget(guideLabel);
+	guideWindow->setLayout(guideLayout);
+
+	guideWindow->setWindowTitle(QString("Guide Information"));
+	guideWindow->setFixedSize(500, 330);
+
+	//donate window
+	donateWindow = new QWidget;
+	donateLayout = new QVBoxLayout;
+	donateLabel = new QLabel;
+	donateLabel->setText(tr("Scan the following QR code to donate to developers!"));
+	donatePixmap = new QPixmap("image\\donate.jpg");
+	donateLabel->setPixmap(*donatePixmap);
+	donateLayout->addWidget(donateLabel);
+	donateWindow->setLayout(donateLayout);
+
+	donateWindow->setWindowTitle(QString("How to donate"));
+	donateWindow->setFixedSize(500, 300);
+
+	//about window
+	aboutWindow = new QWidget;
+	aboutLayout = new QVBoxLayout;
+	aboutLabel = new QLabel;
+	aboutPixmap = new QPixmap("image\\about.jpg");
+	aboutLabel->setPixmap(*aboutPixmap);
+	aboutLayout->addWidget(aboutLabel);
+	aboutWindow->setLayout(aboutLayout);
+
+	aboutWindow->setWindowTitle(QString("Developer Information"));
+	aboutWindow->setFixedSize(500, 300);
+
 	//禁止最大化窗口
 	setWindowFlags(windowFlags()& ~Qt::WindowMaximizeButtonHint);
-	
+
 	ui.leftOriginView->setScene(originScene);
-	ui.rightOriginView->setScene(originScene);
 	ui.binaryzationView->setScene(binaryScene);
 	ui.denoiseView->setScene(denoiseScene);
 	ui.removeBgView->setScene(removeBGScene);
 	ui.grayView->setScene(grayScene);
+
 	connect(ui.importPicAction, &QAction::triggered, this, &View::importPicture);
 	connect(ui.saveAction, &QAction::triggered, this, &View::saveFile);
 	connect(ui.confirmButton, &QPushButton::clicked, this, &View::processPicture);
-	connect(ui.recognizeButton,&QPushButton::clicked, this, &View::solvePicture);
+	connect(ui.recognizeButton, &QPushButton::clicked, this, &View::solvePicture);
 	connect(ui.exitAction, &QAction::triggered, this, &View::close);
 	connect(ui.donateAction, &QAction::triggered, this, &View::donateText);
 	connect(ui.guideAction, &QAction::triggered, this, &View::guideText);
 	connect(ui.aboutAction, &QAction::triggered, this, &View::aboutText);
-	
+
+	connect(ui.rBGSlider, SIGNAL(valueChanged(int)), ui.rBGSpinBox, SLOT(setValue(int)));
+	connect(ui.rBGSpinBox, SIGNAL(valueChanged(int)), ui.rBGSlider, SLOT(setValue(int)));
+	connect(ui.binarySlider, SIGNAL(valueChanged(int)), ui.binarySpinBox, SLOT(setValue(int)));
+	connect(ui.binarySpinBox, SIGNAL(valueChanged(int)), ui.binarySlider, SLOT(setValue(int)));
+	connect(ui.denoiseSlider, SIGNAL(valueChanged(int)), ui.denoiseSpinBox, SLOT(setValue(int)));
+	connect(ui.denoiseSpinBox, SIGNAL(valueChanged(int)), ui.denoiseSlider, SLOT(setValue(int)));
 }
 
 void View::saveFile() {
@@ -47,26 +93,19 @@ void View::saveFile() {
 }
 
 void View::guideText() {
-	QWidget * p1 = new QWidget();
-	p1->setWindowTitle(QString("Guide Information"));
-	p1->show();
-	
+	guideWindow->show();
+}
 
-}
 void View::aboutText() {
-	QWidget * p1 = new QWidget();
-	p1->setWindowTitle(QString("Developer Informatin"));
-	//p1->
-	p1->show();
+	aboutWindow->show();
 }
+
 void View::donateText() {
-	QWidget * p1 = new QWidget();
-	p1->setWindowTitle(QString("How to donate"));
-	p1->show();
+	donateWindow->show();
 }
+
 void View::processPicture() {
-	/*shared_ptr<StringParam> sp = make_shared<StringParam>();
-	sp->setPath(filename.toStdString());*/
+
 	if (ui.aveButton->isChecked()) {
 		grayType = GrayType::GRAY_AVERAGE;
 	}
@@ -79,9 +118,12 @@ void View::processPicture() {
 	else {
 		grayType = -1;
 	}
-	shared_ptr<GrayTypeParam> sp = make_shared<GrayTypeParam>();
+	shared_ptr<ProcessParam> sp = make_shared<ProcessParam>();
 	sp->setType(grayType);
-	processPictureCommand->setParams(static_pointer_cast<Param, GrayTypeParam>(sp));
+	sp->setRemoveThreshold(ui.rBGSlider->value());
+	sp->setBinaryThreshold(ui.binarySlider->value());
+	sp->setDenoiseHalfRadius(ui.denoiseSlider->value());
+	processPictureCommand->setParams(static_pointer_cast<Param, ProcessParam>(sp));
 
 	processPictureCommand->exec();
 }
@@ -99,7 +141,7 @@ void View::importPicture() {
 		loadPictureCommand->exec();
 	}
 }
-void View::solvePicture(){
+void View::solvePicture() {
 	solvePictureCommand->exec();
 }
 void View::update(const string& attribute) {
@@ -123,6 +165,6 @@ void View::update(const string& attribute) {
 }
 void View::commandSucceed(bool flag) {
 	if (!flag) {
-		QMessageBox::critical(this, "Error", "Error!");
+		QMessageBox::critical(this, "Error", *errorMessage);
 	}
 }

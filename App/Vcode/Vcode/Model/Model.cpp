@@ -6,13 +6,13 @@
 #pragma comment(lib,"libtesseract304d.lib")
 #pragma comment(lib,"liblept171d.lib")
 
-void Model::processPicture(int grayType) {
+void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 	try {
 		if (grayType < 0) {
-			throw exception();
+			throw QException("Please choose one gray type!");
 		}
 		if (m.empty()) {
-			throw exception();
+			throw QException("Open one image first!");
 		}
 		//begin graym
 		m.copyTo(graym);
@@ -54,7 +54,7 @@ void Model::processPicture(int grayType) {
 		}
 		//end graym
 		if (graym.empty()) {
-			throw exception();
+			throw QException("Image can not be transformed to gray type!");
 		}
 		//begin remove background
 		graym.copyTo(removeBGm);
@@ -62,11 +62,11 @@ void Model::processPicture(int grayType) {
 			uchar* data = removeBGm.ptr<uchar>(j);
 
 			for (int i = 0; i < nc; i++) {
-				data[i] = (data[i] > RemoveBG::THRESHOLD) ? 255 : data[i];
+				data[i] = (data[i] > removet) ? 255 : data[i];
 			}
 		}
 		if (removeBGm.empty()) {
-			throw exception();
+			throw QException("Image can not be removed background!");
 		}
 		//end remove bg	
 		//begin binary
@@ -75,19 +75,19 @@ void Model::processPicture(int grayType) {
 			uchar* data = binarym.ptr<uchar>(j);
 
 			for (int i = 0; i < nc; i++) {
-				data[i] = (data[i] > Binary::THRESHOLD) ? 255 : 0;
+				data[i] = (data[i] > binaryt) ? 255 : 0;
 				//0 black, 255 white
 			}
 		}
 		if (binarym.empty()) {
-			throw exception();
+			throw QException("Image can not be transformed to binary type!");
 		}
 		//end binary
 		//begin denoise
 		binarym.copyTo(denoisem);
 		cv::Mat tmp;
 		denoisem.copyTo(tmp);
-		int r = Denoise::HALF_RADIUS;
+		int r = denoiser;
 		uchar** datas = new uchar*[nr];
 		//erosion
 		for (int i = 0; i < nr; i++) {
@@ -148,33 +148,34 @@ void Model::processPicture(int grayType) {
 		}
 		tmp.copyTo(denoisem);
 		if (denoisem.empty()) {
-			throw exception();
+			throw QException("Image can not be denoised!");
 		}
 		cv::imwrite("denoise.jpg", denoisem);
 		//end denoise
 		string s = "process";
 		this->notify(s);
 	}
-	catch (exception& e) {
+	catch (QException& E) {
+		e = E;
 		this->notify(false);
 	}
 }
 void Model::solvePicture(){
 	try {
 		if (denoisem.empty()) {
-			throw exception();
+			throw QException("Denoise image first!");
 		}
 		tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 		// Initialize tesseract-ocr with English, without specifying tessdata path
-		if (api->Init(NULL, "eng")) {
-			cout << "Could not initialize tesseract.\n";
+		if (api->Init(NULL, "eng+chi+normal")) {
+			throw QException("Could not initialize tesseract!");
 			exit(1);
 		}
 
 		// Open input image with leptonica library
 		Pix *image = pixRead("denoise.jpg");
 		if (image == nullptr) {
-			throw exception();
+			throw QException("Denoised image can not be found!");
 		}
 		api->SetImage(image);
 		// Get OCR result
@@ -182,30 +183,32 @@ void Model::solvePicture(){
 		api->End();
 		pixDestroy(&image);
 		if (remove("denoise.jpg")) {
-			throw exception();
+			throw QException("Denoised image can not be removed!");
 		}
 		string s = "result";
 		this->notify(s);
 	}
-	catch (...) {
+	catch (QException& E) {
+		e = E;
 		this->notify(false);
 	}
 }
 void Model::saveResult(string savePath) {
 	try {
 		if (savePath.empty()) {
-			throw exception();
+			throw QException("Path is empty!");
 		}
 		ofstream out(savePath);
 		if(out.bad()) {
-			throw exception();
+			throw QException("File can not be created!");
 		}
 		if (res == "") {
-			throw exception();
+			throw QException("Result does not exist!");
 		}
 		out << res;
 	}
-	catch (...) {
+	catch (QException& E) {
+		e = E;
 		notify(false);
 	}
 }

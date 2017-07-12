@@ -16,6 +16,7 @@ private:
 	shared_ptr<QImage> pDenoiseImg;
 	shared_ptr<QImage> pBinaryImg;
 	QString* res;
+	QString* errorMessage;
 
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<BaseCommand> processPictureCommand;
@@ -51,6 +52,7 @@ public:
 		pDenoiseImg = shared_ptr<QImage>(new QImage());
 		pBinaryImg = shared_ptr<QImage>(new QImage());
 		res = new QString();
+		errorMessage = new QString();
 	}
 	~ViewModel() {
 		
@@ -61,8 +63,8 @@ public:
 	void loadPicture(const string& path) {
 		model->loadPicture(path);
 	}
-	void processPicture(int grayType) {
-		model->processPicture(grayType);
+	void processPicture(int grayType, int removet, int binaryt, int denoiser) {
+		model->processPicture(grayType,removet,binaryt,denoiser);
 	}
 	void solvePicture() {
 		model->solvePicture();
@@ -76,6 +78,7 @@ public:
 	shared_ptr<QImage> getpDenoiseImg() { return pDenoiseImg; }
 	shared_ptr<QImage> getpBinaryImg() { return pBinaryImg; }
 	QString* getRes() { return res; }
+	QString* getErrorMessage() { return errorMessage; }
 	QImage cvMatToQImage(const cv::Mat &inMat)
 	{
 		switch (inMat.type())
@@ -117,6 +120,7 @@ public:
 			
 			*pImg = cvMatToQImage(model->getMat());
 			if (pImg->isNull()) {
+				*errorMessage = "Mat to QImage fail!";
 				notify(false);
 			}
 			else {
@@ -130,6 +134,7 @@ public:
 			*pDenoiseImg = cvMatToQImage(model->getDenoiseMat());
 			*pBinaryImg = cvMatToQImage(model->getBinaryMat());
 			if (pGrayImg->isNull()) {
+				*errorMessage = "Gray image does not exist!";
 				notify(false);
 			}
 			else {
@@ -140,6 +145,7 @@ public:
 		else if (attribute == "result") {
 			*res = model->getRes().c_str();
 			if (*res == "") {
+				*errorMessage = "Result is empty!";
 				notify(false);
 			}
 			else {
@@ -149,6 +155,9 @@ public:
 		}
 	}
 	virtual void commandSucceed(bool flag) {
+		if (!flag) {
+			*errorMessage = QString::fromStdString(model->getException().getErrorMes());
+		}
 		notify(flag);
 	}
 };
