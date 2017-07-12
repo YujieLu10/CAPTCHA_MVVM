@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 	
 	//modify background
-	QPixmap backgroundPixmap("image\\bg2.jpg");
+	QPixmap backgroundPixmap("image\\bg3.jpg");
 	QPalette qp;
 	qp.setBrush(pv->backgroundRole(), QBrush(backgroundPixmap));
 	pv->setPalette(qp);

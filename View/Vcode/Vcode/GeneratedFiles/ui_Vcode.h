@@ -150,15 +150,15 @@ public:
         label_5->setWordWrap(false);
         aveButton = new QRadioButton(groupBox_2);
         aveButton->setObjectName(QStringLiteral("aveButton"));
-        aveButton->setGeometry(QRect(30, 120, 115, 19));
+        aveButton->setGeometry(QRect(30, 90, 115, 19));
         aveButton->setStyleSheet(QStringLiteral("font: 12pt \"Agency FB\";"));
         maxbutton = new QRadioButton(groupBox_2);
         maxbutton->setObjectName(QStringLiteral("maxbutton"));
-        maxbutton->setGeometry(QRect(30, 150, 115, 19));
+        maxbutton->setGeometry(QRect(30, 120, 115, 19));
         maxbutton->setStyleSheet(QStringLiteral("font: 12pt \"Agency FB\";"));
         weightAveButton = new QRadioButton(groupBox_2);
         weightAveButton->setObjectName(QStringLiteral("weightAveButton"));
-        weightAveButton->setGeometry(QRect(30, 180, 115, 19));
+        weightAveButton->setGeometry(QRect(30, 150, 115, 19));
         weightAveButton->setStyleSheet(QStringLiteral("font: 12pt \"Agency FB\";"));
         label_6 = new QLabel(groupBox_2);
         label_6->setObjectName(QStringLiteral("label_6"));
@@ -166,7 +166,7 @@ public:
         label_6->setStyleSheet(QString::fromUtf8("font: 12pt \"Agency FB\"\357\274\233"));
         confirmButton = new QPushButton(groupBox_2);
         confirmButton->setObjectName(QStringLiteral("confirmButton"));
-        confirmButton->setGeometry(QRect(40, 210, 93, 28));
+        confirmButton->setGeometry(QRect(40, 180, 93, 28));
         ViewClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ViewClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
