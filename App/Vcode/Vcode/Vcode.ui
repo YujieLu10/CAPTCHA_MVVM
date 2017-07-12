@@ -337,6 +337,7 @@
      <string>文件</string>
     </property>
     <addaction name="importPicAction"/>
+    <addaction name="saveAction"/>
     <addaction name="separator"/>
     <addaction name="exitAction"/>
    </widget>
@@ -344,9 +345,10 @@
     <property name="title">
      <string>帮助</string>
     </property>
-    <addaction name="action"/>
+    <addaction name="donateAction"/>
+    <addaction name="guideAction"/>
     <addaction name="separator"/>
-    <addaction name="action_3"/>
+    <addaction name="aboutAction"/>
    </widget>
    <addaction name="file"/>
    <addaction name="help"/>
@@ -370,14 +372,24 @@
     <string>退出</string>
    </property>
   </action>
-  <action name="action">
+  <action name="donateAction">
    <property name="text">
     <string>捐助</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="aboutAction">
    <property name="text">
     <string>关于</string>
+   </property>
+  </action>
+  <action name="guideAction">
+   <property name="text">
+    <string>指南</string>
+   </property>
+  </action>
+  <action name="saveAction">
+   <property name="text">
+    <string>保存文件</string>
    </property>
   </action>
  </widget>
