@@ -6,7 +6,7 @@
 #pragma comment(lib,"libtesseract304d.lib")
 #pragma comment(lib,"liblept171d.lib")
 
-void Model::processPicture(int grayType) {
+void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 	try {
 		if (grayType < 0) {
 			throw QException("Please choose one gray type!");
@@ -62,7 +62,7 @@ void Model::processPicture(int grayType) {
 			uchar* data = removeBGm.ptr<uchar>(j);
 
 			for (int i = 0; i < nc; i++) {
-				data[i] = (data[i] > RemoveBG::THRESHOLD) ? 255 : data[i];
+				data[i] = (data[i] > removet) ? 255 : data[i];
 			}
 		}
 		if (removeBGm.empty()) {
@@ -75,7 +75,7 @@ void Model::processPicture(int grayType) {
 			uchar* data = binarym.ptr<uchar>(j);
 
 			for (int i = 0; i < nc; i++) {
-				data[i] = (data[i] > Binary::THRESHOLD) ? 255 : 0;
+				data[i] = (data[i] > binaryt) ? 255 : 0;
 				//0 black, 255 white
 			}
 		}
@@ -87,7 +87,7 @@ void Model::processPicture(int grayType) {
 		binarym.copyTo(denoisem);
 		cv::Mat tmp;
 		denoisem.copyTo(tmp);
-		int r = Denoise::HALF_RADIUS;
+		int r = denoiser;
 		uchar** datas = new uchar*[nr];
 		//erosion
 		for (int i = 0; i < nr; i++) {
@@ -167,7 +167,7 @@ void Model::solvePicture(){
 		}
 		tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 		// Initialize tesseract-ocr with English, without specifying tessdata path
-		if (api->Init(NULL, "eng")) {
+		if (api->Init(NULL, "eng+chi+normal")) {
 			throw QException("Could not initialize tesseract!");
 			exit(1);
 		}

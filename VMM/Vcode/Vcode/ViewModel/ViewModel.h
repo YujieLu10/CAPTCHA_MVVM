@@ -63,8 +63,8 @@ public:
 	void loadPicture(const string& path) {
 		model->loadPicture(path);
 	}
-	void processPicture(int grayType) {
-		model->processPicture(grayType);
+	void processPicture(int grayType, int removet, int binaryt, int denoiser) {
+		model->processPicture(grayType,removet,binaryt,denoiser);
 	}
 	void solvePicture() {
 		model->solvePicture();

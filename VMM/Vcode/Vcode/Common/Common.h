@@ -67,32 +67,56 @@ namespace GrayType {
 	};
 }
 
-namespace RemoveBG {
-	enum {
-		THRESHOLD=200
-	};
-}
+//namespace RemoveBG {
+//	enum {
+//		THRESHOLD=100
+//		//0-255
+//	};
+//}
+//
+//namespace Binary {
+//	enum {
+//		THRESHOLD = 200
+//		//0-255
+//	};
+//}
+//namespace Denoise {
+//	enum {
+//		HALF_RADIUS = 1
+//		//1-10
+//	};
+//}
 
-namespace Binary {
-	enum {
-		THRESHOLD = 200
-	};
-}
-namespace Denoise {
-	enum {
-		HALF_RADIUS = 1
-	};
-}
 
-
-class GrayTypeParam :public Param {
+class ProcessParam :public Param {
 private:
-	int T;
+	int GrayType;
+	int removeBGThreshold;
+	int binaryThreshold;
+	int denoiseHalfRadius;
 public:
 	void setType(int t) {
-		T = t;
+		GrayType = t;
 	}
 	int getType(){
-		return T;
+		return GrayType;
+	}
+	void setRemoveThreshold(int t) {
+		removeBGThreshold = t;
+	}
+	int getRemoveBGThreshold() {
+		return removeBGThreshold;
+	}
+	void setBinaryThreshold(int t) {
+		binaryThreshold = t;
+	}
+	int getBinaryThreshold() {
+		return binaryThreshold;
+	}
+	void setDenoiseHalfRadius(int r) {
+		denoiseHalfRadius = r;
+	}
+	int getDenoiseHalfRadius() {
+		return denoiseHalfRadius;
 	}
 };
