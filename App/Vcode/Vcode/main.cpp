@@ -6,7 +6,7 @@
 #include <qsplashscreen.h>
 #include <qelapsedtimer.h>
 
-const int SPLASHTIME = 2000;
+const int SPLASHTIME = 1500;
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	//initial
 
 	//
-	QPixmap initialPixmap("image\\bg.png");
+	QPixmap initialPixmap("image\\initial.jpg");
 	QSplashScreen splash(initialPixmap);
 	//	splash.resize(500, 300);
 	splash.show();
@@ -41,12 +41,13 @@ int main(int argc, char *argv[])
 	pv->setBinaryImg(pvm->getpBinaryImg());
 	pv->setRemoveBGImg(pvm->getpRemoveBGImg());
 	pv->setRes(pvm->getRes());
+	pv->setErrorMessage(pvm->getErrorMessage());
 	//observer
 	pm->addObserver(static_pointer_cast<Observer, ViewModel>(pvm));
 	pvm->addObserver(static_pointer_cast<Observer, View>(pv));
 
 	//modify background
-	QPixmap backgroundPixmap("image\\bg2.jpg");
+	QPixmap backgroundPixmap("image\\bg.jpg");
 	qDebug() << backgroundPixmap.isNull();
 	QPalette qp;
 	qp.setBrush(pv->backgroundRole(), QBrush(backgroundPixmap));

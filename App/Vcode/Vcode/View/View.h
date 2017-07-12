@@ -2,6 +2,7 @@
 #include "ui_Vcode.h"
 #include <Common/Common.h>
 #include <QtWidgets/QMainWindow>
+#include <QBoxLayout>
 
 class View : public QMainWindow, public Observer
 {
@@ -42,6 +43,9 @@ public:
 	void setRes(QString* s) {
 		res = s;
 	}
+	void setErrorMessage(QString* p) {
+		errorMessage = p;
+	}
 private:
 	Ui::ViewClass ui;
 	QString filename;
@@ -52,6 +56,23 @@ private:
 	QGraphicsScene* removeBGScene;
 	QGraphicsScene* binaryScene;
 	QString* res;
+
+	QWidget* guideWindow;
+	QVBoxLayout* guideLayout;
+	QLabel* guideLabel;
+	QPixmap* guidePixmap;
+	
+	QWidget* donateWindow;
+	QVBoxLayout* donateLayout;
+	QLabel* donateLabel;
+	QPixmap* donatePixmap;
+	
+	QWidget* aboutWindow;
+	QVBoxLayout* aboutLayout;
+	QLabel* aboutLabel;
+	QPixmap* aboutPixmap;
+
+	QString* errorMessage;
 
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<BaseCommand> processPictureCommand;
