@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	//
 	QPixmap initialPixmap("image\\bg.png");
 	QSplashScreen splash(initialPixmap);
-//	splash.resize(500, 300);
+	//	splash.resize(500, 300);
 	splash.show();
 	QElapsedTimer timer;
 	timer.start();
@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 	pv->setLoadPictureCommand(pvm->getLoadPictureCommand());
 	pv->setProcessPictureCommand(pvm->getProcessPictureCommand());
 	pv->setSolvePictureCommand(pvm->getSolvePictureCommand());
+	pv->setSaveFileCommand(pvm->getSaveFileCommand());
 	//bind data
 	pv->setImg(pvm->getpImg());
 	pv->setGrayImg(pvm->getpGrayImg());

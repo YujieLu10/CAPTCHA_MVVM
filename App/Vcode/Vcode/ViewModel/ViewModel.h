@@ -4,6 +4,7 @@
 #include<ViewModel/Commands/LoadPictureCommand.h>
 #include<ViewModel/Commands/ProcessPictureCommand.h>
 #include<ViewModel/Commands/SolvePictureCommand.h>
+#include<ViewModel/Commands/SaveFileCommand.h>
 #include<QImage>
 #include<fstream>
 class ViewModel:public Observable,public Observer
@@ -19,6 +20,7 @@ private:
 	shared_ptr<BaseCommand> loadPictureCommand;
 	shared_ptr<BaseCommand> processPictureCommand;
 	shared_ptr<BaseCommand> solvePictureCommand;
+	shared_ptr<BaseCommand> saveFileCommand;
 
 	shared_ptr<Model> model;
 public:
@@ -32,10 +34,17 @@ public:
 	shared_ptr<BaseCommand> getSolvePictureCommand() {
 		return solvePictureCommand;
 	}
+	shared_ptr<BaseCommand> getSaveFileCommand() {
+		return saveFileCommand;
+	}
+
 	ViewModel() {
 		loadPictureCommand =static_pointer_cast<BaseCommand,LoadPictureCommand>(shared_ptr<LoadPictureCommand>(new LoadPictureCommand(this)));
 		processPictureCommand = static_pointer_cast<BaseCommand, ProcessPictureCommand>(shared_ptr<ProcessPictureCommand>(new ProcessPictureCommand(this)));
 		solvePictureCommand = static_pointer_cast<BaseCommand, SolvePictureCommand>(shared_ptr<SolvePictureCommand>(new SolvePictureCommand(this)));
+		saveFileCommand = static_pointer_cast<BaseCommand, SaveFileCommand>(shared_ptr<SaveFileCommand>(new SaveFileCommand(this)));
+		
+
 		pImg = shared_ptr<QImage>(new QImage());
 		pGrayImg = shared_ptr<QImage>(new QImage());
 		pRemoveBGImg = shared_ptr<QImage>(new QImage());
@@ -57,6 +66,9 @@ public:
 	}
 	void solvePicture() {
 		model->solvePicture();
+	}
+	void saveFile(string savePath) {
+		model->saveResult(savePath);
 	}
 	shared_ptr<QImage> getpImg() { return pImg; }
 	shared_ptr<QImage> getpGrayImg() { return pGrayImg; }

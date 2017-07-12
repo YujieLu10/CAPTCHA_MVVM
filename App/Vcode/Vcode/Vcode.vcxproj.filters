@@ -55,16 +55,19 @@
     <ClCompile Include="GeneratedFiles\Release\moc_View.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Model\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="ViewModel\Commands\LoadPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ViewModel\Commands\ProcessPictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewModel\Commands\SolvePictureCommand.cpp">
+    <ClCompile Include="ViewModel\Commands\SaveFileCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model\Model.cpp">
+    <ClCompile Include="ViewModel\Commands\SolvePictureCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -82,26 +85,31 @@
     <CustomBuild Include="Common\Common.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Model\Model.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ViewModel\Commands\LoadPictureCommand.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ViewModel\Commands\ProcessPictureCommand.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ViewModel\Commands\SolvePictureCommand.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ViewModel\ViewModel.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="GeneratedFiles\ui_Vcode.h">
       <Filter>Generated Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="logo2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Model\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\ViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\Commands\LoadPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\Commands\ProcessPictureCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\Commands\SaveFileCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\Commands\SolvePictureCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

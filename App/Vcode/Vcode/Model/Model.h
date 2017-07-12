@@ -32,12 +32,11 @@ public:
 			this->notify(false);
 		}
 		else {
-			qDebug() << m.rows << " " << m.cols << endl << m.channels();
 			string s = "image";
 			this->notify(s);
 		}
 	}
 	void processPicture(int grayType);
 	void solvePicture();
-
+	void saveResult(string savePath);
 };
