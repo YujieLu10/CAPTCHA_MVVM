@@ -30,7 +30,7 @@ View::View(QWidget *parent)
 
 	guideWindow->setWindowTitle(QString("Guide Information"));
 	guideWindow->setFixedSize(500, 330);
-	
+
 	//donate window
 	donateWindow = new QWidget;
 	donateLayout = new QVBoxLayout;
@@ -43,7 +43,7 @@ View::View(QWidget *parent)
 
 	donateWindow->setWindowTitle(QString("How to donate"));
 	donateWindow->setFixedSize(500, 300);
-	
+
 	//about window
 	aboutWindow = new QWidget;
 	aboutLayout = new QVBoxLayout;
@@ -58,22 +58,28 @@ View::View(QWidget *parent)
 
 	//禁止最大化窗口
 	setWindowFlags(windowFlags()& ~Qt::WindowMaximizeButtonHint);
-	
+
 	ui.leftOriginView->setScene(originScene);
-	ui.rightOriginView->setScene(originScene);
 	ui.binaryzationView->setScene(binaryScene);
 	ui.denoiseView->setScene(denoiseScene);
 	ui.removeBgView->setScene(removeBGScene);
 	ui.grayView->setScene(grayScene);
+
 	connect(ui.importPicAction, &QAction::triggered, this, &View::importPicture);
 	connect(ui.saveAction, &QAction::triggered, this, &View::saveFile);
 	connect(ui.confirmButton, &QPushButton::clicked, this, &View::processPicture);
-	connect(ui.recognizeButton,&QPushButton::clicked, this, &View::solvePicture);
+	connect(ui.recognizeButton, &QPushButton::clicked, this, &View::solvePicture);
 	connect(ui.exitAction, &QAction::triggered, this, &View::close);
 	connect(ui.donateAction, &QAction::triggered, this, &View::donateText);
 	connect(ui.guideAction, &QAction::triggered, this, &View::guideText);
 	connect(ui.aboutAction, &QAction::triggered, this, &View::aboutText);
-	
+
+	connect(ui.rBGSlider, SIGNAL(valueChanged(int)), ui.rBGSpinBox, SLOT(setValue(int)));
+	connect(ui.rBGSpinBox, SIGNAL(valueChanged(int)), ui.rBGSlider, SLOT(setValue(int)));
+	connect(ui.binarySlider, SIGNAL(valueChanged(int)), ui.binarySpinBox, SLOT(setValue(int)));
+	connect(ui.binarySpinBox, SIGNAL(valueChanged(int)), ui.binarySlider, SLOT(setValue(int)));
+	connect(ui.denoiseSlider, SIGNAL(valueChanged(int)), ui.denoiseSpinBox, SLOT(setValue(int)));
+	connect(ui.denoiseSpinBox, SIGNAL(valueChanged(int)), ui.denoiseSlider, SLOT(setValue(int)));
 }
 
 void View::saveFile() {
@@ -99,8 +105,7 @@ void View::donateText() {
 }
 
 void View::processPicture() {
-	/*shared_ptr<StringParam> sp = make_shared<StringParam>();
-	sp->setPath(filename.toStdString());*/
+
 	if (ui.aveButton->isChecked()) {
 		grayType = GrayType::GRAY_AVERAGE;
 	}
@@ -113,9 +118,12 @@ void View::processPicture() {
 	else {
 		grayType = -1;
 	}
-	shared_ptr<GrayTypeParam> sp = make_shared<GrayTypeParam>();
+	shared_ptr<ProcessParam> sp = make_shared<ProcessParam>();
 	sp->setType(grayType);
-	processPictureCommand->setParams(static_pointer_cast<Param, GrayTypeParam>(sp));
+	sp->setRemoveThreshold(ui.rBGSlider->value());
+	sp->setBinaryThreshold(ui.binarySlider->value());
+	sp->setDenoiseHalfRadius(ui.denoiseSlider->value());
+	processPictureCommand->setParams(static_pointer_cast<Param, ProcessParam>(sp));
 
 	processPictureCommand->exec();
 }
@@ -133,7 +141,7 @@ void View::importPicture() {
 		loadPictureCommand->exec();
 	}
 }
-void View::solvePicture(){
+void View::solvePicture() {
 	solvePictureCommand->exec();
 }
 void View::update(const string& attribute) {

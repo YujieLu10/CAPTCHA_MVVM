@@ -41,8 +41,8 @@
       <rect>
        <x>190</x>
        <y>270</y>
-       <width>93</width>
-       <height>28</height>
+       <width>90</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -67,8 +67,8 @@
       <rect>
        <x>190</x>
        <y>390</y>
-       <width>91</width>
-       <height>31</height>
+       <width>90</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -131,16 +131,6 @@
        <y>590</y>
        <width>256</width>
        <height>81</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QGraphicsView" name="rightOriginView">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>41</y>
-       <width>256</width>
-       <height>171</height>
       </rect>
      </property>
     </widget>
@@ -247,8 +237,8 @@
     <widget class="QRadioButton" name="aveButton">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>90</y>
+       <x>120</x>
+       <y>50</y>
        <width>115</width>
        <height>19</height>
       </rect>
@@ -263,8 +253,8 @@
     <widget class="QRadioButton" name="maxbutton">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>120</y>
+       <x>230</x>
+       <y>50</y>
        <width>115</width>
        <height>19</height>
       </rect>
@@ -279,8 +269,8 @@
     <widget class="QRadioButton" name="weightAveButton">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>150</y>
+       <x>340</x>
+       <y>50</y>
        <width>115</width>
        <height>19</height>
       </rect>
@@ -295,7 +285,7 @@
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>20</x>
        <y>50</y>
        <width>81</width>
        <height>21</height>
@@ -311,14 +301,167 @@
     <widget class="QPushButton" name="confirmButton">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>180</y>
-       <width>93</width>
-       <height>28</height>
+       <x>180</x>
+       <y>190</y>
+       <width>90</width>
+       <height>30</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Agency FB&quot;;</string>
      </property>
      <property name="text">
       <string>确定</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>85</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Agency FB&quot;；</string>
+     </property>
+     <property name="text">
+      <string>去背景阈值</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Agency FB&quot;；</string>
+     </property>
+     <property name="text">
+      <string>二值化阈值</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>155</y>
+       <width>170</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Agency FB&quot;；</string>
+     </property>
+     <property name="text">
+      <string>去噪点窗口半边长</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rBGSlider">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>85</y>
+       <width>160</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="invertedControls">
+      <bool>false</bool>
+     </property>
+     <property name="tickPosition">
+      <enum>QSlider::NoTicks</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="binarySlider">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>120</y>
+       <width>160</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="denoiseSlider">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>155</y>
+       <width>160</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>10</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="rBGSpinBox">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>85</y>
+       <width>46</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="binarySpinBox">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>120</y>
+       <width>46</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="denoiseSpinBox">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>155</y>
+       <width>46</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>10</number>
      </property>
     </widget>
    </widget>
