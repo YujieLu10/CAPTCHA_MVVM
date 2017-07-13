@@ -143,8 +143,11 @@ public:
 			}
 		}
 		else if (attribute == "result") {
+			//res->fromStdWString(model->getRes().c_str());
+			//res->QString::fromUtf8(model->getRes().c_str());
 			*res = model->getRes().c_str();
-			if (*res == "") {
+			//res->fromStdWString(model->getWRes());
+			if (res->isEmpty()) {
 				*errorMessage = "Result is empty!";
 				notify(false);
 			}
