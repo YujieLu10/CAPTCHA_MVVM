@@ -37,6 +37,7 @@ public:
 	cv::Mat& getBinaryMat() { return binarym; }
 	QException& getException() { return e; }
 	string getRes() { return res; }
+	wstring UTF8ToUnicode(const string& str);
 	void loadPicture(const string& path) {
 		m = cv::imread(path, 1);
 		if (m.empty()) {

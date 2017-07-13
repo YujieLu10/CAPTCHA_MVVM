@@ -3,6 +3,7 @@
 #include <leptonica/allheaders.h>
 #include <locale>
 #include<Model/Model.h>
+#include<qdebug.h>
 #pragma comment(lib,"libtesseract304d.lib")
 #pragma comment(lib,"liblept171d.lib")
 
@@ -68,7 +69,7 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 		if (removeBGm.empty()) {
 			throw QException("Image can not be removed background!");
 		}
-		//end remove bg	
+		//end remove bg
 		//begin binary
 		removeBGm.copyTo(binarym);
 		for (int j = 0; j < nr; j++) {
@@ -111,8 +112,7 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 				}
 				if (flag) {
 					desData[i] = 0;
-				}
-				else {
+				} else {
 					desData[i] = 255;
 				}
 			}
@@ -140,8 +140,7 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 				}
 				if (flag) {
 					desData[i] = 0;
-				}
-				else {
+				} else {
 					desData[i] = 255;
 				}
 			}
@@ -154,20 +153,33 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 		//end denoise
 		string s = "process";
 		this->notify(s);
-	}
-	catch (QException& E) {
+	} catch (QException& E) {
 		e = E;
 		this->notify(false);
 	}
 }
-void Model::solvePicture(){
+wstring Model::UTF8ToUnicode(const string& str) {
+	int  len = 0;
+	len = str.length();
+	int  unicodeLen = ::MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, NULL, 0);
+	wchar_t* pUnicode;
+	pUnicode = new wchar_t[unicodeLen + 1];
+	memset(pUnicode, 0, (unicodeLen + 1) * sizeof(wchar_t));
+	::MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, (LPWSTR)pUnicode, unicodeLen);
+	wstring rt;
+	rt = (wchar_t*)pUnicode;
+	delete pUnicode;
+	return rt;
+}
+void Model::solvePicture() {
+
 	try {
 		if (denoisem.empty()) {
 			throw QException("Denoise image first!");
 		}
 		tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 		// Initialize tesseract-ocr with English, without specifying tessdata path
-		if (api->Init(NULL, "eng+chi+normal")) {
+		if (api->Init(NULL, "eng+chi_sim+normal")) {
 			throw QException("Could not initialize tesseract!");
 			exit(1);
 		}
@@ -179,16 +191,17 @@ void Model::solvePicture(){
 		}
 		api->SetImage(image);
 		// Get OCR result
+
 		res = api->GetUTF8Text();
+
 		api->End();
 		pixDestroy(&image);
-		if (remove("denoise.jpg")) {
+		/*if (remove("denoise.jpg")) {
 			throw QException("Denoised image can not be removed!");
-		}
+		}*/
 		string s = "result";
 		this->notify(s);
-	}
-	catch (QException& E) {
+	} catch (QException& E) {
 		e = E;
 		this->notify(false);
 	}
@@ -198,16 +211,16 @@ void Model::saveResult(string savePath) {
 		if (savePath.empty()) {
 			throw QException("Path is empty!");
 		}
-		if (res == "") {
+		if (res.empty()) {
 			throw QException("Result does not exist!");
 		}
-		ofstream out(savePath);
-		if(out.bad()) {
+		ofstream fout(savePath);
+
+		if(fout.bad()) {
 			throw QException("File can not be created!");
-		}		
-		out << res;
-	}
-	catch (QException& E) {
+		}
+		fout << res;
+	} catch (QException& E) {
 		e = E;
 		notify(false);
 	}
