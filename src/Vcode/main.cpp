@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	shared_ptr<View> pv(new View);
 
 	//initial
-	QPixmap initialPixmap("..\\..\\img\\initial.jpg");
+	QPixmap initialPixmap("img\\initial.jpg");
 	QSplashScreen splash(initialPixmap);
 	splash.show();
 	QElapsedTimer timer;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 	pvm->addObserver(static_pointer_cast<Observer, View>(pv));
 
 	//modify background
-	QPixmap backgroundPixmap("..\\..\\img\\\\bg.jpg");
+	QPixmap backgroundPixmap("img\\background.jpg");
 	QPalette qp;
 	qp.setBrush(pv->backgroundRole(), QBrush(backgroundPixmap));
 	pv->setPalette(qp);

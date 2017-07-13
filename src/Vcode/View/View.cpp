@@ -31,7 +31,7 @@ View::View(QWidget *parent)
 	guideWindow = new QWidget;
 	guideLayout = new QVBoxLayout;
 	guideLabel = new QLabel;
-	guidePixmap = new QPixmap("..\\..\\img\\guide.jpg");
+	guidePixmap = new QPixmap("img\\guide.jpg");
 	guideLabel->setPixmap(*guidePixmap);
 	guideLayout->addWidget(guideLabel);
 	guideWindow->setLayout(guideLayout);
@@ -44,7 +44,7 @@ View::View(QWidget *parent)
 	donateLayout = new QVBoxLayout;
 	donateLabel = new QLabel;
 	donateLabel->setText(tr("Scan the following QR code to donate to developers!"));
-	donatePixmap = new QPixmap("..\\..\\img\\donate.jpg");
+	donatePixmap = new QPixmap("img\\donate.jpg");
 	donateLabel->setPixmap(*donatePixmap);
 	donateLayout->addWidget(donateLabel);
 	donateWindow->setLayout(donateLayout);
@@ -56,7 +56,7 @@ View::View(QWidget *parent)
 	aboutWindow = new QWidget;
 	aboutLayout = new QVBoxLayout;
 	aboutLabel = new QLabel;
-	aboutPixmap = new QPixmap("..\\..\\img\\about.jpg");
+	aboutPixmap = new QPixmap("img\\about.jpg");
 	aboutLabel->setPixmap(*aboutPixmap);
 	aboutLayout->addWidget(aboutLabel);
 	aboutWindow->setLayout(aboutLayout);
