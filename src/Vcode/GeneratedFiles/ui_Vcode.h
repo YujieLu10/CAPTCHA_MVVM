@@ -86,6 +86,7 @@ public:
         exitAction->setObjectName(QStringLiteral("exitAction"));
         donateAction = new QAction(ViewClass);
         donateAction->setObjectName(QStringLiteral("donateAction"));
+        donateAction->setCheckable(false);
         aboutAction = new QAction(ViewClass);
         aboutAction->setObjectName(QStringLiteral("aboutAction"));
         guideAction = new QAction(ViewClass);
@@ -107,6 +108,7 @@ public:
         resultText = new QTextBrowser(groupBox);
         resultText->setObjectName(QStringLiteral("resultText"));
         resultText->setGeometry(QRect(110, 450, 261, 201));
+        resultText->setStyleSheet(QStringLiteral("font: 75 12pt \"Courier\";"));
         label = new QLabel(groupBox);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(190, 390, 90, 30));
@@ -191,6 +193,7 @@ public:
         rBGSlider->setObjectName(QStringLiteral("rBGSlider"));
         rBGSlider->setGeometry(QRect(200, 85, 160, 20));
         rBGSlider->setMaximum(255);
+        rBGSlider->setValue(150);
         rBGSlider->setOrientation(Qt::Horizontal);
         rBGSlider->setInvertedAppearance(false);
         rBGSlider->setInvertedControls(false);
@@ -199,25 +202,28 @@ public:
         binarySlider->setObjectName(QStringLiteral("binarySlider"));
         binarySlider->setGeometry(QRect(200, 120, 160, 22));
         binarySlider->setMaximum(255);
+        binarySlider->setValue(220);
         binarySlider->setOrientation(Qt::Horizontal);
         denoiseSlider = new QSlider(groupBox_2);
         denoiseSlider->setObjectName(QStringLiteral("denoiseSlider"));
         denoiseSlider->setGeometry(QRect(200, 155, 160, 22));
-        denoiseSlider->setMinimum(1);
+        denoiseSlider->setMinimum(0);
         denoiseSlider->setMaximum(10);
         denoiseSlider->setOrientation(Qt::Horizontal);
         rBGSpinBox = new QSpinBox(groupBox_2);
         rBGSpinBox->setObjectName(QStringLiteral("rBGSpinBox"));
         rBGSpinBox->setGeometry(QRect(380, 85, 46, 22));
         rBGSpinBox->setMaximum(255);
+        rBGSpinBox->setValue(150);
         binarySpinBox = new QSpinBox(groupBox_2);
         binarySpinBox->setObjectName(QStringLiteral("binarySpinBox"));
         binarySpinBox->setGeometry(QRect(380, 120, 46, 22));
         binarySpinBox->setMaximum(255);
+        binarySpinBox->setValue(220);
         denoiseSpinBox = new QSpinBox(groupBox_2);
         denoiseSpinBox->setObjectName(QStringLiteral("denoiseSpinBox"));
         denoiseSpinBox->setGeometry(QRect(380, 155, 46, 22));
-        denoiseSpinBox->setMinimum(1);
+        denoiseSpinBox->setMinimum(0);
         denoiseSpinBox->setMaximum(10);
         ViewClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ViewClass);
@@ -225,6 +231,7 @@ public:
         menuBar->setGeometry(QRect(0, 0, 1071, 26));
         file = new QMenu(menuBar);
         file->setObjectName(QStringLiteral("file"));
+        file->setToolTipsVisible(false);
         help = new QMenu(menuBar);
         help->setObjectName(QStringLiteral("help"));
         ViewClass->setMenuBar(menuBar);
@@ -262,6 +269,7 @@ public:
         saveAction->setText(QApplication::translate("ViewClass", "\344\277\235\345\255\230\346\226\207\344\273\266", 0));
         groupBox->setTitle(QString());
         recognizeButton->setText(QApplication::translate("ViewClass", "\345\274\200\345\247\213\350\257\206\345\210\253", 0));
+        recognizeButton->setShortcut(QApplication::translate("ViewClass", "Ctrl+B", 0));
         label->setText(QApplication::translate("ViewClass", "\350\257\206\345\210\253\347\273\223\346\236\234", 0));
         groupBox_2->setTitle(QString());
         label_4->setText(QApplication::translate("ViewClass", "\345\216\273\350\203\214\346\231\257", 0));
@@ -273,6 +281,7 @@ public:
         weightAveButton->setText(QApplication::translate("ViewClass", "\345\212\240\346\235\203\345\271\263\345\235\207", 0));
         label_6->setText(QApplication::translate("ViewClass", "\347\201\260\345\272\246\346\226\271\345\274\217", 0));
         confirmButton->setText(QApplication::translate("ViewClass", "\347\241\256\345\256\232", 0));
+        confirmButton->setShortcut(QApplication::translate("ViewClass", "Return", 0));
         label_7->setText(QApplication::translate("ViewClass", "\345\216\273\350\203\214\346\231\257\351\230\210\345\200\274", 0));
         label_8->setText(QApplication::translate("ViewClass", "\344\272\214\345\200\274\345\214\226\351\230\210\345\200\274", 0));
         label_9->setText(QApplication::translate("ViewClass", "\345\216\273\345\231\252\347\202\271\347\252\227\345\217\243\345\215\212\350\276\271\351\225\277", 0));

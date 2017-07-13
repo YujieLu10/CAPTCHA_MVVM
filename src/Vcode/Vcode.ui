@@ -51,6 +51,9 @@
      <property name="text">
       <string>开始识别</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+B</string>
+     </property>
     </widget>
     <widget class="QTextBrowser" name="resultText">
      <property name="geometry">
@@ -60,6 +63,9 @@
        <width>261</width>
        <height>201</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;Courier&quot;;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">
@@ -313,6 +319,9 @@
      <property name="text">
       <string>确定</string>
      </property>
+     <property name="shortcut">
+      <string>Return</string>
+     </property>
     </widget>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -374,6 +383,9 @@
      <property name="maximum">
       <number>255</number>
      </property>
+     <property name="value">
+      <number>150</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -399,6 +411,9 @@
      <property name="maximum">
       <number>255</number>
      </property>
+     <property name="value">
+      <number>220</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -413,7 +428,7 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="maximum">
       <number>10</number>
@@ -434,6 +449,9 @@
      <property name="maximum">
       <number>255</number>
      </property>
+     <property name="value">
+      <number>150</number>
+     </property>
     </widget>
     <widget class="QSpinBox" name="binarySpinBox">
      <property name="geometry">
@@ -447,6 +465,9 @@
      <property name="maximum">
       <number>255</number>
      </property>
+     <property name="value">
+      <number>220</number>
+     </property>
     </widget>
     <widget class="QSpinBox" name="denoiseSpinBox">
      <property name="geometry">
@@ -458,7 +479,7 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="maximum">
       <number>10</number>
@@ -478,6 +499,9 @@
    <widget class="QMenu" name="file">
     <property name="title">
      <string>文件</string>
+    </property>
+    <property name="toolTipsVisible">
+     <bool>false</bool>
     </property>
     <addaction name="importPicAction"/>
     <addaction name="saveAction"/>
@@ -516,6 +540,9 @@
    </property>
   </action>
   <action name="donateAction">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>捐助</string>
    </property>

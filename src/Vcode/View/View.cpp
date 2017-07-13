@@ -11,6 +11,16 @@ View::View(QWidget *parent)
 	ui.importPicAction->setShortcuts(QKeySequence::Open);
 	ui.importPicAction->setStatusTip(tr("Import a picture of verification code"));
 	ui.exitAction->setShortcuts(QKeySequence::Close);
+	ui.exitAction->setStatusTip(tr("Quit"));
+	ui.saveAction->setShortcut(QKeySequence::Save);
+	ui.saveAction->setStatusTip(tr("Save the recognizing result of the verification code"));
+	ui.donateAction->setShortcut(Qt::CTRL | Qt::Key_D);
+	ui.donateAction->setStatusTip(tr("Donate to developers"));
+	ui.guideAction->setShortcut(QKeySequence::HelpContents);
+	ui.guideAction->setStatusTip(tr("Guide for basic operations"));
+	ui.aboutAction->setShortcut(Qt::CTRL | Qt::Key_A);
+	ui.aboutAction->setStatusTip(tr("About authors and versions"));
+
 	originScene = new QGraphicsScene();
 	grayScene = new QGraphicsScene();
 	denoiseScene = new QGraphicsScene();
@@ -93,14 +103,17 @@ void View::saveFile() {
 }
 
 void View::guideText() {
+	guideWindow->setWindowModality(Qt::ApplicationModal);
 	guideWindow->show();
 }
 
-void View::aboutText() {
+void View::aboutText() { 
+	aboutWindow->setWindowModality(Qt::ApplicationModal);
 	aboutWindow->show();
 }
 
 void View::donateText() {
+	donateWindow->setWindowModality(Qt::ApplicationModal);
 	donateWindow->show();
 }
 
