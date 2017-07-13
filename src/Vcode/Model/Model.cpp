@@ -198,13 +198,13 @@ void Model::saveResult(string savePath) {
 		if (savePath.empty()) {
 			throw QException("Path is empty!");
 		}
-		ofstream out(savePath);
-		if(out.bad()) {
-			throw QException("File can not be created!");
-		}
 		if (res == "") {
 			throw QException("Result does not exist!");
 		}
+		ofstream out(savePath);
+		if(out.bad()) {
+			throw QException("File can not be created!");
+		}		
 		out << res;
 	}
 	catch (QException& E) {

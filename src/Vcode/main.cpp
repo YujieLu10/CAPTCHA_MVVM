@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	//initial
 
 	//
-	QPixmap initialPixmap("image\\initial.jpg");
+	QPixmap initialPixmap("..\\..\\img\\initial.jpg");
 	QSplashScreen splash(initialPixmap);
 	//	splash.resize(500, 300);
 	splash.show();
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 	pvm->addObserver(static_pointer_cast<Observer, View>(pv));
 
 	//modify background
-	QPixmap backgroundPixmap("image\\bg.jpg");
+	QPixmap backgroundPixmap("..\\..\\img\\\\bg.jpg");
 	qDebug() << backgroundPixmap.isNull();
 	QPalette qp;
 	qp.setBrush(pv->backgroundRole(), QBrush(backgroundPixmap));
