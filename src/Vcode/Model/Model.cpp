@@ -1,5 +1,4 @@
 #include <tesseract/baseapi.h>
-//baseapi.h 一定要在using namespace std之前
 #include <leptonica/allheaders.h>
 #include <locale>
 #include<Model/Model.h>
@@ -7,7 +6,7 @@
 #pragma comment(lib,"libtesseract304d.lib")
 #pragma comment(lib,"liblept171d.lib")
 
-void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
+void Model::processPicture(int grayType, int removet, int binaryt, int denoiser) {
 	try {
 		if (grayType < 0) {
 			throw QException("Please choose one gray type!");
@@ -112,7 +111,8 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 				}
 				if (flag) {
 					desData[i] = 0;
-				} else {
+				}
+				else {
 					desData[i] = 255;
 				}
 			}
@@ -140,7 +140,8 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 				}
 				if (flag) {
 					desData[i] = 0;
-				} else {
+				}
+				else {
 					desData[i] = 255;
 				}
 			}
@@ -153,7 +154,8 @@ void Model::processPicture(int grayType,int removet,int binaryt,int denoiser) {
 		//end denoise
 		string s = "process";
 		this->notify(s);
-	} catch (QException& E) {
+	}
+	catch (QException& E) {
 		e = E;
 		this->notify(false);
 	}
@@ -196,14 +198,23 @@ void Model::solvePicture() {
 
 		api->End();
 		pixDestroy(&image);
-		/*if (remove("denoise.jpg")) {
-			throw QException("Denoised image can not be removed!");
-		}*/
 		string s = "result";
 		this->notify(s);
-	} catch (QException& E) {
+	}
+	catch (QException& E) {
 		e = E;
 		this->notify(false);
+	}
+}
+void Model::loadPicture(const string& path) {
+	m = cv::imread(path, 1);
+	if (m.empty()) {
+		e.setErrorMes("Load picture failed!");
+		this->notify(false);
+	}
+	else {
+		string s = "image";
+		this->notify(s);
 	}
 }
 void Model::saveResult(string savePath) {
@@ -216,12 +227,39 @@ void Model::saveResult(string savePath) {
 		}
 		ofstream fout(savePath);
 
-		if(fout.bad()) {
+		if (fout.bad()) {
 			throw QException("File can not be created!");
 		}
 		fout << res;
-	} catch (QException& E) {
+	}
+	catch (QException& E) {
 		e = E;
 		notify(false);
 	}
+}
+cv::Mat& Model::getMat() {
+	return m;
+}
+cv::Mat& Model::getGrayMat() {
+	return graym;
+}
+cv::Mat& Model::getDenoiseMat() {
+	return denoisem;
+}
+cv::Mat& Model::getRemoveBGMat() {
+	return removeBGm;
+}
+cv::Mat& Model::getBinaryMat() {
+	return binarym;
+}
+QException& Model::getException() {
+	return e;
+}
+
+QException::QException(string s) :errorMessage(s) {}
+void QException::setErrorMes(string s) {
+	errorMessage = s;
+}
+string QException::getErrorMes() {
+	return errorMessage;
 }
