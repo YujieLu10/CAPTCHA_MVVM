@@ -1,7 +1,6 @@
 #pragma once
 #include<Common/Common.h>
 #include<opencv2/opencv.hpp>
-#include<qdebug.h>
 #include<fstream>
 #include<exception>
 #include<string>
@@ -9,15 +8,14 @@ class QException :public exception {
 private:
 	string errorMessage;
 public:
-	QException(string s=""):errorMessage(s){}
-	void setErrorMes(string s){
-		errorMessage = s;
-	}
-	string getErrorMes() { return errorMessage; }
+	QException(string s = "");
+
+	void setErrorMes(string s);
+
+	string getErrorMes();
 };
 using namespace std;
-class Model :public Observable
-{
+class Model :public Observable {
 protected:
 	cv::Mat m;
 	cv::Mat graym;
@@ -30,25 +28,27 @@ public:
 	Model() {}
 	~Model() {}
 
-	cv::Mat& getMat() { return m; }
-	cv::Mat& getGrayMat() { return graym; }
-	cv::Mat& getDenoiseMat() { return denoisem; }
-	cv::Mat& getRemoveBGMat() { return removeBGm; }
-	cv::Mat& getBinaryMat() { return binarym; }
-	QException& getException() { return e; }
+	cv::Mat& getMat();
+
+	cv::Mat& getGrayMat();
+
+	cv::Mat& getDenoiseMat();
+
+	cv::Mat& getRemoveBGMat();
+
+	cv::Mat& getBinaryMat();
+
+	QException& getException();
+
 	string getRes() { return res; }
-	void loadPicture(const string& path) {
-		m = cv::imread(path, 1);
-		if (m.empty()) {
-			e.setErrorMes("Load picture failed!");
-			this->notify(false);
-		}
-		else {
-			string s = "image";
-			this->notify(s);
-		}
-	}
+
+	wstring UTF8ToUnicode(const string& str);
+
+	void loadPicture(const string& path);
+
 	void processPicture(int grayType, int removet, int binaryt, int denoiser);
+
 	void solvePicture();
+
 	void saveResult(string savePath);
 };
