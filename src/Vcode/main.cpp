@@ -10,6 +10,7 @@ const int SPLASHTIME = 1500;
 
 int main(int argc, char *argv[])
 {
+	putenv("TESSDATA_PREFIX=Tesseract-OCR");
 	QApplication a(argc, argv);
 	shared_ptr<View> pv(new View);
 
