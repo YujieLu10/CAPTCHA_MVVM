@@ -1,12 +1,10 @@
 #include <View/View.h>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <qdebug.h>
-#include<qlayout.h>
+#include <qlayout.h>
 
 View::View(QWidget *parent)
-	: QMainWindow(parent)
-{
+	: QMainWindow(parent) {
 	ui.setupUi(this);
 	ui.importPicAction->setShortcuts(QKeySequence::Open);
 	ui.importPicAction->setStatusTip(tr("Import a picture of verification code"));
@@ -107,7 +105,7 @@ void View::guideText() {
 	guideWindow->show();
 }
 
-void View::aboutText() { 
+void View::aboutText() {
 	aboutWindow->setWindowModality(Qt::ApplicationModal);
 	aboutWindow->show();
 }
@@ -118,7 +116,6 @@ void View::donateText() {
 }
 
 void View::processPicture() {
-
 	if (ui.aveButton->isChecked()) {
 		grayType = GrayType::GRAY_AVERAGE;
 	}
@@ -141,16 +138,11 @@ void View::processPicture() {
 	processPictureCommand->exec();
 }
 void View::importPicture() {
-
 	filename = QFileDialog::getOpenFileName(this, "Select Picture", ".", tr("Images (*.png *.bmp *.jpg *.tif *.GIF )"));
-
 	if (!filename.isEmpty()) {
-
 		shared_ptr<StringParam> sp = make_shared<StringParam>();
 		sp->setPath(filename.toStdString());
-
 		loadPictureCommand->setParams(static_pointer_cast<Param, StringParam>(sp));
-
 		loadPictureCommand->exec();
 	}
 }
