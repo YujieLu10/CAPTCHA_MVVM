@@ -7,8 +7,8 @@
 * 组员：邓墨林
 ### `人员分工`
 * 陈凌昊：Model和ViewModel以及App的整合
-* 余淏：View的开发和github的使用
-* 卢雨洁：jenkins持续集成的搭建和Tesseract的使用
+* 余淏：View的开发、github、jenkins的使用
+* 卢雨洁：jenkins持续集成的搭建和Tesseract的使用以及View的开发
 * 邓墨林：Tessaeract-OCR识别数字、训练字库和软件图标以及相关图形界面的美工设计
 * 王钰博：tesseract的使用，训练字库，识别图片，opencv使用
 ### `使用说明`
