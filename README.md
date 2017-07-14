@@ -1,9 +1,21 @@
 ## `基于MVVM模式的复杂验证码识别`
+### `组员`
+* 组长：陈凌昊 3150105275
+* 组员：余淏   3150105287
+* 组员：王钰博 3150104021
+* 组员：卢雨洁 3150105267
+* 组员：邓墨琳 3150103457
+### `人员分工`
+* 陈凌昊：Model,ViewModel以及App的整合
+* 余淏：View的开发、github、jenkins的使用
+* 卢雨洁：jenkins持续集成的搭建,Tesseract的使用以及View的开发
+* 邓墨林：Tessaeract-OCR识别数字、训练字库和软件图标以及相关图形界面的美工设计
+* 王钰博：tesseract的使用，训练字库，识别图片，opencv使用
 ### `使用说明`
 * 识别 ：菜单栏-文件-导入图片-选择要识别的图片-选择灰度化方式-点击确定-点击开始识别
 * 保存结果 ：菜单栏-文件-保存-选择路径-保存
 ### `功能`
-实现验证码的识别
+支持用户在本地通过路径选择图片，经过去噪、去背景、二值化等图像处理，识别图片中的英文和数字。支持用户自主调节图像处理过程的参数，再进行识别。支持用户把识别结果保存为文档。
 
 ### `实现步骤`
 * 图像采集 ：本项目通过本地选取的方式读入图片。
@@ -19,45 +31,14 @@
     
 * 识别 ：输入待识别的处理后的图片，转换成分类器需要的输入格式，然后通过输出的类
 和置信度，来判断大概可能是哪个字母。识别本质上就是分类。
-### `功能模式协作图`
-![](https://github.com/cubeFUN/Sum/blob/master/img/Frame.jpg)
+
 ### `MVVM模式`
-MVVM模式由视图(View)、视图模型 (ViewModel)、模型(Model)三部分组成，通 过这三部分实现UI逻辑、呈现逻辑和状态控 制、数据与业务逻辑的分离。 
+MVVM模式由视图(View)、视图模型 (ViewModel)、模型(Model)三部分组成，通过这三部分实现UI逻辑、呈现逻辑和状态控制、数据与业务逻辑的分离。 
 ### `Model`
 数据访问层
-* para
-    * Mat m
-* func
-    * Mat getMat()
-    * void loadPicture(string)
-
 ### `View`
 UI界面
-* para
-    * filename :QString
-    * originScene : QGraphicsScene*
-    * loadPictureCommand : BaseCommand*
-    * pImg : QImage*
-* func
-    * setLoadPictureCommand(BaseCommand*) : void
-    * setImg(Qimage*) : void
-    * update(string) : void
-    * commandSucceed(bool) : void
-
 ### `View-Model`
 View的抽象，负责View与 Model之间信息转换，同时将View的 Command传送到Model
-* para
-    * pImg : QImage*
-    * loadPictureCommand : BaseCommand*
-    * model : Model*
-* func
-    * getLoadPictureCommand() : BaseCommand*
-    * setModel(Model*) : void
-    * loadPicture(string) : void
-    * getpImg() : Qimage*
-    * cvMatToQImage(Mat&) : void
-    * update(string) : void
-    * commandSucceed(bool) : void
-### `功能效果图`
 
 

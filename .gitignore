@@ -10,7 +10,7 @@
 *.sln.docstates
 
 #Build results
-
+GeneratedFiles/
 x64/
 Win32/
 build/
